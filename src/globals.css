@@ -1,0 +1,15 @@
+:root {
+  --black: #1a1b22;
+  --white: #ffffff;
+  --gray: #b6bcbf;
+  --blue: #2f71e5;
+  /* Add other colors from your design */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Add any other global styles */
