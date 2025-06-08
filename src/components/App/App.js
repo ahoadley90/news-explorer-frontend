@@ -6,4 +6,19 @@ import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
 
-// ... rest of your App component
+function App() {
+  return (
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/saved-news" element={<SavedNews />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
