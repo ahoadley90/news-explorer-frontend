@@ -1,0 +1,8 @@
+import React from "react";
+import "./About.css";
+
+function About() {
+  return <div>About Section</div>;
+}
+
+export default About;
