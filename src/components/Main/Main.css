@@ -1,0 +1,35 @@
+.main {
+  min-height: 100vh;
+}
+
+.hero {
+  background-image: url("../../images/hero-background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 576px;
+  display: flex;
+  align-items: center;
+  padding: 0 104px;
+}
+
+.hero__content {
+  max-width: 608px;
+}
+
+.hero__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  color: #ffffff;
+  margin: 0 0 32px;
+}
+
+.hero__description {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0 0 88px;
+}
