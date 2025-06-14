@@ -4,7 +4,14 @@ import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import About from "../About/About";
 
-function Main() {
+function Main({
+  onSearch,
+  searchQuery,
+  setSearchQuery,
+  news,
+  isLoading,
+  searchError,
+}) {
   return (
     <main className="main">
       <section className="hero">
@@ -14,10 +21,16 @@ function Main() {
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <SearchForm />
+          <SearchForm
+            onSearch={onSearch}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            isLoading={isLoading}
+          />
         </div>
       </section>
-      <NewsCardList />
+      {searchError && <p className="error">{searchError}</p>}
+      <NewsCardList news={news} />
       <About />
     </main>
   );

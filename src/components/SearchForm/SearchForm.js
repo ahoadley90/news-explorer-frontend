@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({ onSearch, isLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement search functionality
-  };
-
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
+    <form onSubmit={onSearch} className="search-form">
       <input
         type="text"
-        className="search-form__input"
-        placeholder="Enter topic"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Enter topic"
+        className="search-form__input"
       />
-      <button type="submit" className="search-form__button">
-        Search
+      <button
+        type="submit"
+        className="search-form__button"
+        disabled={isLoading}
+      >
+        {isLoading ? "Searching..." : "Search"}
       </button>
     </form>
   );
