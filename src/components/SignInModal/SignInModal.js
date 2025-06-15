@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SignInModal.css";
 
-function SignInModal({ isOpen, onClose, onSignIn }) {
+function SignInModal({ isOpen, onClose, onSignIn, openSignUp }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
@@ -12,10 +12,23 @@ function SignInModal({ isOpen, onClose, onSignIn }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted with email:", email);
     if (isFormValid) {
+      console.log("About to call onSignIn function");
       onSignIn(email, password);
+      // Clear the form fields
+      setEmail("");
+      setPassword("");
     }
   };
+
+  // Clear form fields when modal is opened or closed
+  useEffect(() => {
+    if (isOpen) {
+      setEmail("");
+      setPassword("");
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -31,27 +44,29 @@ function SignInModal({ isOpen, onClose, onSignIn }) {
             &times;
           </button>
           <h2 className="modal__title">Sign in</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="modal__input-group">
-              <label htmlFor="email">Email</label>
+          <form onSubmit={handleSubmit} className="modal__form">
+            <label className="modal__label">
+              Email
               <input
                 type="email"
-                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="modal__input"
+                placeholder="Enter email"
                 required
               />
-            </div>
-            <div className="modal__input-group">
-              <label htmlFor="password">Password</label>
+            </label>
+            <label className="modal__label">
+              Password
               <input
                 type="password"
-                id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="modal__input"
+                placeholder="Enter password"
                 required
               />
-            </div>
+            </label>
             <button
               type="submit"
               className={`modal__submit ${
@@ -63,7 +78,10 @@ function SignInModal({ isOpen, onClose, onSignIn }) {
             </button>
           </form>
           <p className="modal__signup-text">
-            or <a href="#">Sign up</a>
+            or{" "}
+            <button className="modal__link" onClick={openSignUp}>
+              Sign up
+            </button>
           </p>
         </div>
       </div>
