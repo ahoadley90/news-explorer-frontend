@@ -10,6 +10,7 @@ function NewsCard({
   isSaved,
   onSaveArticle,
   onRemoveArticle,
+  keyword, // Add this prop
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -22,7 +23,7 @@ function NewsCard({
       if (isSaved) {
         onRemoveArticle(article);
       } else {
-        onSaveArticle(article);
+        onSaveArticle(article, keyword);
       }
     }
   };
@@ -42,6 +43,9 @@ function NewsCard({
           alt={article.title}
           className="news-card__image"
         />
+        {isSaved && keyword && (
+          <div className="news-card__keyword">{keyword}</div>
+        )}
         <div className="news-card__save-container">
           {showTooltip && (
             <div className="news-card__tooltip">Sign in to save articles</div>

@@ -106,22 +106,30 @@ function App() {
     }
   }, []);
 
-  const handleSaveArticle = useCallback((articleToSave) => {
-    setSavedArticles((prevArticles) => {
-      const isAlreadySaved = prevArticles.some(
-        (article) => article.url === articleToSave.url
-      );
-      if (!isAlreadySaved) {
-        const updatedArticles = [
-          ...prevArticles,
-          { ...articleToSave, _id: Date.now().toString() },
-        ];
-        localStorage.setItem("savedArticles", JSON.stringify(updatedArticles));
-        return updatedArticles;
-      }
-      return prevArticles;
-    });
-  }, []);
+  const handleSaveArticle = useCallback(
+    (articleToSave) => {
+      setSavedArticles((prevArticles) => {
+        const isAlreadySaved = prevArticles.some(
+          (article) => article.url === articleToSave.url
+        );
+        if (!isAlreadySaved) {
+          const updatedArticle = {
+            ...articleToSave,
+            _id: Date.now().toString(),
+            keyword: searchQuery, // Add the current search query as the keyword
+          };
+          const updatedArticles = [...prevArticles, updatedArticle];
+          localStorage.setItem(
+            "savedArticles",
+            JSON.stringify(updatedArticles)
+          );
+          return updatedArticles;
+        }
+        return prevArticles;
+      });
+    },
+    [searchQuery]
+  );
 
   const handleRemoveArticle = useCallback((articleToRemove) => {
     setSavedArticles((prevArticles) => {

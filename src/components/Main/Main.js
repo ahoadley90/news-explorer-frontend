@@ -3,6 +3,7 @@ import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import About from "../About/About";
+import NewsCard from "../NewsCard/NewsCard"; // Add this line
 
 function Main({
   onSearch,
@@ -40,7 +41,21 @@ function Main({
         savedArticles={savedArticles}
         onSaveArticle={onSaveArticle}
         onRemoveArticle={onRemoveArticle}
-      />
+      >
+        {news.map((article) => (
+          <NewsCard
+            key={article.url}
+            article={article}
+            isLoggedIn={isLoggedIn}
+            isSaved={savedArticles.some(
+              (savedArticle) => savedArticle.url === article.url
+            )}
+            onSaveArticle={onSaveArticle}
+            onRemoveArticle={onRemoveArticle}
+            keyword={searchQuery} // Pass the current search query as the keyword
+          />
+        ))}
+      </NewsCardList>
       <About />
     </main>
   );

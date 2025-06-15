@@ -10,11 +10,12 @@ function SavedNews({ savedArticles, userName, onRemoveArticle }) {
       <div className="saved-news__articles">
         {savedArticles.map((article) => (
           <NewsCard
-            key={article.url}
+            key={article._id}
             article={article}
             isLoggedIn={true}
             isSaved={true}
-            onRemoveArticle={() => onRemoveArticle(article)}
+            onRemoveArticle={onRemoveArticle}
+            keyword={article.keyword} // Pass the saved keyword
           />
         ))}
       </div>

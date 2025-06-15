@@ -100,7 +100,6 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
           )}
         </nav>
       </div>
-      <button onClick={checkAuthState}>Check Auth State</button>
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={closeSignInModal}
