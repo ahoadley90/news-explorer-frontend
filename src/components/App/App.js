@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getNews } from "../../utils/api";
 import { auth } from "../../utils/firebase";
@@ -15,34 +15,42 @@ import SignInModal from "../SignInModal/SignInModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [userName, setUserName] = useState("");
+  const [authState, setAuthState] = useState({
+    isLoggedIn: false,
+    currentUser: null,
+    userName: "",
+  });
   const [news, setNews] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState(null);
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-  const [isRegistrationSuccessModalOpen, setIsRegistrationSuccessModalOpen] =
-    useState(false);
+  const [modals, setModals] = useState({
+    isSignInModalOpen: false,
+    isSignUpModalOpen: false,
+    isRegistrationSuccessModalOpen: false,
+  });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(
+        "Auth state changed:",
+        user ? "User logged in" : "User logged out"
+      );
+      setAuthState((prevState) => ({
+        ...prevState,
+        isLoggedIn: !!user,
+        currentUser: user,
+        userName: user ? user.displayName || user.email : "",
+      }));
+
       if (user) {
-        setIsLoggedIn(true);
-        setCurrentUser(user);
-        setUserName(user.displayName || user.email);
         // Load saved articles from localStorage
         const storedArticles = JSON.parse(
           localStorage.getItem("savedArticles") || "[]"
         );
         setSavedArticles(storedArticles);
       } else {
-        setIsLoggedIn(false);
-        setCurrentUser(null);
-        setUserName("");
         setSavedArticles([]);
       }
     });
@@ -51,9 +59,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("App: isLoggedIn changed to", isLoggedIn);
-    console.log("App: currentUser changed to", currentUser);
-  }, [isLoggedIn, currentUser]);
+    console.log("App: isLoggedIn changed to", authState.isLoggedIn);
+    console.log("App: currentUser changed to", authState.currentUser);
+  }, [authState.isLoggedIn, authState.currentUser]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -77,30 +85,30 @@ function App() {
     }
   };
 
-  const handleSignUp = useCallback(async (email, password, username) => {
-    try {
-      await register(email, password, username);
-      setIsSignUpModalOpen(false);
-      setIsRegistrationSuccessModalOpen(true);
-    } catch (error) {
-      console.error("Sign up error:", error);
-      alert(`Sign up failed: ${error.message}`);
-    }
-  }, []);
-
   const handleSignIn = useCallback(async (email, password) => {
     try {
       await login(email, password);
-      setIsSignInModalOpen(false);
+      // The auth state change listener will update the state
     } catch (error) {
       console.error("Sign in error:", error);
       alert(`Sign in failed: ${error.message}`);
     }
   }, []);
 
+  const handleSignUp = useCallback(async (email, password, username) => {
+    try {
+      await register(email, password, username);
+      // The auth state change listener will update the state
+    } catch (error) {
+      console.error("Sign up error:", error);
+      alert(`Sign up failed: ${error.message}`);
+    }
+  }, []);
+
   const handleSignOut = useCallback(async () => {
     try {
       await logout();
+      // The auth state change listener will update the state
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -116,7 +124,7 @@ function App() {
           const updatedArticle = {
             ...articleToSave,
             _id: Date.now().toString(),
-            keyword: searchQuery, // Add the current search query as the keyword
+            keyword: searchQuery,
           };
           const updatedArticles = [...prevArticles, updatedArticle];
           localStorage.setItem(
@@ -141,70 +149,99 @@ function App() {
     });
   }, []);
 
+  const toggleModal = useCallback((modalName, value) => {
+    setModals((prev) => ({ ...prev, [modalName]: value }));
+  }, []);
+
+  const headerProps = useMemo(
+    () => ({
+      isLoggedIn: authState.isLoggedIn,
+      onSignOut: handleSignOut,
+      userName: authState.userName,
+      onSignIn: handleSignIn,
+      onSignUp: handleSignUp,
+    }),
+    [
+      authState.isLoggedIn,
+      authState.userName,
+      handleSignOut,
+      handleSignIn,
+      handleSignUp,
+    ]
+  );
+
+  const mainProps = useMemo(
+    () => ({
+      onSearch: handleSearch,
+      searchQuery: searchQuery,
+      setSearchQuery: setSearchQuery,
+      news: news,
+      isLoading: isLoading,
+      searchError: searchError,
+      isLoggedIn: authState.isLoggedIn,
+      savedArticles: savedArticles,
+      onSaveArticle: handleSaveArticle,
+      onRemoveArticle: handleRemoveArticle,
+    }),
+    [
+      handleSearch,
+      searchQuery,
+      setSearchQuery,
+      news,
+      isLoading,
+      searchError,
+      authState.isLoggedIn,
+      savedArticles,
+      handleSaveArticle,
+      handleRemoveArticle,
+    ]
+  );
+
+  const savedNewsProps = useMemo(
+    () => ({
+      savedArticles: savedArticles,
+      userName: authState.userName,
+      onRemoveArticle: handleRemoveArticle,
+    }),
+    [savedArticles, authState.userName, handleRemoveArticle]
+  );
+
   return (
     <Router>
       <div className="app">
-        <Header
-          isLoggedIn={isLoggedIn}
-          onSignOut={handleSignOut}
-          userName={userName}
-          onSignIn={() => setIsSignInModalOpen(true)}
-          onSignUp={() => setIsSignUpModalOpen(true)}
-        />
+        <Header {...headerProps} />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                onSearch={handleSearch}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                news={news}
-                isLoading={isLoading}
-                searchError={searchError}
-                isLoggedIn={isLoggedIn}
-                savedArticles={savedArticles}
-                onSaveArticle={handleSaveArticle}
-                onRemoveArticle={handleRemoveArticle}
-              />
-            }
-          />
+          <Route path="/" element={<Main {...mainProps} />} />
           <Route
             path="/saved-news"
-            element={
-              <SavedNews
-                savedArticles={savedArticles}
-                userName={userName}
-                onRemoveArticle={handleRemoveArticle}
-              />
-            }
+            element={<SavedNews {...savedNewsProps} />}
           />
         </Routes>
         <Footer />
         <SignInModal
-          isOpen={isSignInModalOpen}
-          onClose={() => setIsSignInModalOpen(false)}
+          isOpen={modals.isSignInModalOpen}
+          onClose={() => toggleModal("isSignInModalOpen", false)}
           onSignIn={handleSignIn}
           openSignUp={() => {
-            setIsSignInModalOpen(false);
-            setIsSignUpModalOpen(true);
+            toggleModal("isSignInModalOpen", false);
+            toggleModal("isSignUpModalOpen", true);
           }}
         />
         <SignUpModal
-          isOpen={isSignUpModalOpen}
-          onClose={() => setIsSignUpModalOpen(false)}
+          isOpen={modals.isSignUpModalOpen}
+          onClose={() => toggleModal("isSignUpModalOpen", false)}
           onSignUp={handleSignUp}
           openSignIn={() => {
-            setIsSignUpModalOpen(false);
-            setIsSignInModalOpen(true);
+            toggleModal("isSignUpModalOpen", false);
+            toggleModal("isSignInModalOpen", true);
           }}
         />
         <RegistrationSuccessModal
-          isOpen={isRegistrationSuccessModalOpen}
-          onClose={() => setIsRegistrationSuccessModalOpen(false)}
+          isOpen={modals.isRegistrationSuccessModalOpen}
+          onClose={() => toggleModal("isRegistrationSuccessModalOpen", false)}
           openSignIn={() => {
-            setIsRegistrationSuccessModalOpen(false);
-            setIsSignInModalOpen(true);
+            toggleModal("isRegistrationSuccessModalOpen", false);
+            toggleModal("isSignInModalOpen", true);
           }}
         />
       </div>

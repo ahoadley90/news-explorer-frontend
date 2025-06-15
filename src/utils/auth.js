@@ -4,33 +4,30 @@ import {
   signOut,
   updateProfile,
   setPersistence,
-  browserSessionPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
 export const register = async (email, password, username) => {
   try {
-    console.log("Attempting to register user with email:", email);
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    const user = userCredential.user;
+    await updateProfile(userCredential.user, { displayName: username });
 
-    console.log("User created successfully, updating profile...");
-    // Update the user's profile with the username
-    await updateProfile(user, {
-      displayName: username,
+    // Wait for the auth state to be fully updated
+    return new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          unsubscribe();
+          resolve(userCredential);
+        }
+      });
     });
-
-    console.log("User registered successfully:", user);
-    return user;
   } catch (error) {
-    console.error("Registration error in auth.js:", error);
-    console.error("Error code:", error.code);
-    console.error("Error message:", error.message);
+    console.error("Registration error:", error);
     throw error;
   }
 };
@@ -53,11 +50,17 @@ export const login = async (email, password) => {
       JSON.stringify(userCredential, null, 2)
     );
 
-    return userCredential;
+    // Wait for the auth state to be fully updated
+    return new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          unsubscribe();
+          resolve(userCredential);
+        }
+      });
+    });
   } catch (error) {
     console.error("Login error in auth.js:", error);
-    console.error("Error code:", error.code);
-    console.error("Error message:", error.message);
     throw error;
   }
 };

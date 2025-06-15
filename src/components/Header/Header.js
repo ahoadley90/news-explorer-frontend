@@ -51,21 +51,6 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
     setIsRegistrationSuccessModalOpen(true);
   };
 
-  const checkAuthState = () => {
-    const currentUser = auth.currentUser;
-    console.log(
-      "Current auth state:",
-      currentUser ? "Logged in" : "Logged out"
-    );
-    console.log(
-      "Current user from Firebase:",
-      JSON.stringify(currentUser, null, 2)
-    );
-    console.log("isLoggedIn prop:", isLoggedIn);
-    console.log("userName prop:", userName);
-    console.log("Full auth object:", JSON.stringify(auth, null, 2));
-  };
-
   useEffect(() => {
     console.log("Header: isLoggedIn changed to", isLoggedIn);
     console.log("Header: userName changed to", userName);
