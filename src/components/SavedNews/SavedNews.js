@@ -16,6 +16,7 @@ function SavedNews({ savedArticles, userName, onRemoveArticle }) {
             isSaved={true}
             onRemoveArticle={onRemoveArticle}
             keyword={article.keyword} // Pass the saved keyword
+            isSavedNewsPage={true}
           />
         ))}
       </div>

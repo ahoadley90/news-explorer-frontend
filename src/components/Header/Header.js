@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import SignInModal from "../SignInModal/SignInModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
@@ -71,16 +71,31 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
     console.log("Header: userName changed to", userName);
   }, [isLoggedIn, userName]);
 
+  const location = useLocation();
+  const isSavedNewsPage = location.pathname === "/saved-news";
+
   return (
-    <header className="header">
+    <header className={`header ${isSavedNewsPage ? "header_saved-news" : ""}`}>
       <div className="header__content">
-        <h1 className="header__logo">NewsExplorer</h1>
+        <Link to="/" className="header__logo">
+          NewsExplorer
+        </Link>
         <nav className="header__nav">
-          <Link to="/" className="header__nav-link header__nav-link_active">
+          <Link
+            to="/"
+            className={`header__nav-link ${
+              !isSavedNewsPage ? "header__nav-link_active" : ""
+            }`}
+          >
             Home
           </Link>
           {isLoggedIn && (
-            <Link to="/saved-news" className="header__nav-link">
+            <Link
+              to="/saved-news"
+              className={`header__nav-link ${
+                isSavedNewsPage ? "header__nav-link_active" : ""
+              }`}
+            >
               Saved articles
             </Link>
           )}
