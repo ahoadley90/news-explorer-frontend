@@ -15,22 +15,11 @@
   background-color: white;
   border-radius: 16px;
   width: 100%;
-  margin-top: 550px;
   max-width: 430px;
   position: relative;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   padding: 34px 36px;
-}
-
-.modal__content {
-  background-color: #fff;
-  width: 430px;
-  height: 458px;
-  margin-top: 167px;
-  border-radius: 16px;
-  position: relative;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  padding: 34px 36px;
+  box-sizing: border-box;
 }
 
 .modal__close {

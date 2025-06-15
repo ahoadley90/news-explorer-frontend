@@ -1,44 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import SignInModal from "../SignInModal/SignInModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 import logoutIcon from "../../images/logout.svg";
-import { auth } from "../../utils/firebase";
 
 function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  const [isRegistrationSuccessModalOpen, setIsRegistrationSuccessModalOpen] =
-    useState(false);
+  const [activeModal, setActiveModal] = useState(null);
 
-  const openSignInModal = () => {
-    setIsSignUpModalOpen(false);
-    setIsSignInModalOpen(true);
+  const openModal = (modalName) => {
+    setActiveModal(modalName);
   };
 
-  const openSignUpModal = () => {
-    setIsSignInModalOpen(false);
-    setIsSignUpModalOpen(true);
-  };
-
-  const closeSignInModal = () => {
-    setIsSignInModalOpen(false);
-  };
-
-  const closeSignUpModal = () => {
-    setIsSignUpModalOpen(false);
-  };
-
-  const closeRegistrationSuccessModal = () => {
-    setIsRegistrationSuccessModalOpen(false);
+  const closeModal = () => {
+    setActiveModal(null);
   };
 
   const handleSignIn = async (email, password) => {
     try {
       await onSignIn(email, password);
-      closeSignInModal();
+      closeModal();
     } catch (error) {
       console.error("Sign in error in Header:", error);
       alert(`Sign in failed: ${error.message || "Unknown error occurred"}`);
@@ -46,15 +28,14 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
   };
 
   const handleSignUp = async (email, password, username) => {
-    await onSignUp(email, password, username);
-    closeSignUpModal();
-    setIsRegistrationSuccessModalOpen(true);
+    try {
+      await onSignUp(email, password, username);
+      setActiveModal("registrationSuccess");
+    } catch (error) {
+      console.error("Sign up error in Header:", error);
+      alert(`Sign up failed: ${error.message || "Unknown error occurred"}`);
+    }
   };
-
-  useEffect(() => {
-    console.log("Header: isLoggedIn changed to", isLoggedIn);
-    console.log("Header: userName changed to", userName);
-  }, [isLoggedIn, userName]);
 
   const location = useLocation();
   const isSavedNewsPage = location.pathname === "/saved-news";
@@ -94,28 +75,31 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
               />
             </button>
           ) : (
-            <button className="header__button" onClick={openSignInModal}>
+            <button
+              className="header__button"
+              onClick={() => openModal("signIn")}
+            >
               Sign in
             </button>
           )}
         </nav>
       </div>
       <SignInModal
-        isOpen={isSignInModalOpen}
-        onClose={closeSignInModal}
+        isOpen={activeModal === "signIn"}
+        onClose={closeModal}
         onSignIn={handleSignIn}
-        openSignUp={openSignUpModal}
+        openSignUp={() => openModal("signUp")}
       />
       <SignUpModal
-        isOpen={isSignUpModalOpen}
-        onClose={closeSignUpModal}
+        isOpen={activeModal === "signUp"}
+        onClose={closeModal}
         onSignUp={handleSignUp}
-        openSignIn={openSignInModal}
+        openSignIn={() => openModal("signIn")}
       />
       <RegistrationSuccessModal
-        isOpen={isRegistrationSuccessModalOpen}
-        onClose={closeRegistrationSuccessModal}
-        openSignIn={openSignInModal}
+        isOpen={activeModal === "registrationSuccess"}
+        onClose={closeModal}
+        openSignIn={() => openModal("signIn")}
       />
     </header>
   );
