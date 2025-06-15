@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SignUpModal.css";
+import "../../styles/Modal.css";
 
 function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
   const [email, setEmail] = useState("");
@@ -15,17 +15,14 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Sign Up attempted with:", email, password, username);
     if (isFormValid) {
       onSignUp(email, password, username);
-      // Clear the form fields
       setEmail("");
       setPassword("");
       setUsername("");
     }
   };
 
-  // Clear form fields when modal is opened or closed
   useEffect(() => {
     if (isOpen) {
       setEmail("");
@@ -44,9 +41,7 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
             className="modal__close"
             onClick={onClose}
             aria-label="Close modal"
-          >
-            &times;
-          </button>
+          />
           <h2 className="modal__title">Sign up</h2>
           <form onSubmit={handleSubmit} className="modal__form">
             <label className="modal__label">

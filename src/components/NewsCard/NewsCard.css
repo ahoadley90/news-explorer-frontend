@@ -22,25 +22,28 @@
   right: 24px;
   width: 40px;
   height: 40px;
-  background: #ffffff;
+  border: none;
   border-radius: 8px;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 0;
 }
 
-.news-card__save-button img {
+.news-card__save-icon {
   width: 24px;
   height: 24px;
 }
 
 .news-card__save-button_saved {
-  background: #2f71e5;
+  background-color: transparent;
 }
 
-.news-card__save-button_saved img {
-  filter: brightness(0) invert(1);
+.news-card__save-button_saved .news-card__save-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .news-card__tooltip {

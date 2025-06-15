@@ -28,14 +28,17 @@ function App() {
     useState(false);
 
   useEffect(() => {
-    const checkAuthState = () => {
-      const user = auth.currentUser;
-      console.log("Current auth state:", user ? "Logged in" : "Logged out");
-      console.log("Current user:", JSON.stringify(user, null, 2));
-    };
-
-    checkAuthState();
-    const unsubscribe = auth.onAuthStateChanged(checkAuthState);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+        setUserName(user.displayName || user.email);
+      } else {
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        setUserName("");
+      }
+    });
 
     return () => unsubscribe();
   }, []);
@@ -67,54 +70,30 @@ function App() {
     }
   };
 
-  const handleSignUp = async (email, password, username) => {
+  const handleSignUp = useCallback(async (email, password, username) => {
     try {
-      const user = await register(email, password, username);
-      console.log("Registration successful:", user);
+      await register(email, password, username);
       setIsSignUpModalOpen(false);
       setIsRegistrationSuccessModalOpen(true);
-      // Don't set isLoggedIn or currentUser here, let the onAuthStateChanged listener handle it
     } catch (error) {
-      console.error("Registration error:", error.message);
-      alert(`Sign up failed: ${error.message || "Unknown error occurred"}`);
+      console.error("Sign up error:", error);
+      alert(`Sign up failed: ${error.message}`);
     }
-  };
+  }, []);
 
   const handleSignIn = useCallback(async (email, password) => {
     try {
-      console.log("Attempting to sign in with email:", email);
-      const userCredential = await login(email, password);
-      console.log(
-        "Sign in successful, userCredential:",
-        JSON.stringify(userCredential, null, 2)
-      );
-
-      const user = userCredential.user;
-      console.log("User object:", JSON.stringify(user, null, 2));
-
-      // Force a re-render
-      setIsLoggedIn(true);
-      setCurrentUser(user);
-      setUserName(user.displayName || user.email || "User");
-
-      console.log("Updated state after sign in:");
-      console.log("isLoggedIn:", true);
-      console.log("currentUser:", JSON.stringify(user, null, 2));
-      console.log("userName:", user.displayName || user.email || "User");
-
-      // Close the modal after successful login
+      await login(email, password);
       setIsSignInModalOpen(false);
     } catch (error) {
       console.error("Sign in error:", error);
-      console.error("Full error object:", JSON.stringify(error, null, 2));
-      alert(`Sign in failed: ${error.message || "Unknown error occurred"}`);
+      alert(`Sign in failed: ${error.message}`);
     }
   }, []);
 
   const handleSignOut = useCallback(async () => {
     try {
       await logout();
-      // The auth state listener will update isLoggedIn and currentUser
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -148,15 +127,6 @@ function App() {
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
         <Footer />
-        <SignUpModal
-          isOpen={isSignUpModalOpen}
-          onClose={() => setIsSignUpModalOpen(false)}
-          onSignUp={handleSignUp}
-          openSignIn={() => {
-            setIsSignUpModalOpen(false);
-            setIsSignInModalOpen(true);
-          }}
-        />
         <SignInModal
           isOpen={isSignInModalOpen}
           onClose={() => setIsSignInModalOpen(false)}
@@ -164,6 +134,15 @@ function App() {
           openSignUp={() => {
             setIsSignInModalOpen(false);
             setIsSignUpModalOpen(true);
+          }}
+        />
+        <SignUpModal
+          isOpen={isSignUpModalOpen}
+          onClose={() => setIsSignUpModalOpen(false)}
+          onSignUp={handleSignUp}
+          openSignIn={() => {
+            setIsSignUpModalOpen(false);
+            setIsSignInModalOpen(true);
           }}
         />
         <RegistrationSuccessModal

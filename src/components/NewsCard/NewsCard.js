@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./NewsCard.css";
-import saveIcon from "../../images/Saveicon.svg";
+import SaveIcon from "../../images/Saveicon.svg";
+import SavedIcon from "../../images/SavedIcon.svg";
 
-function NewsCard({ article, isLoggedIn }) {
+function NewsCard({
+  article,
+  isLoggedIn,
+  onSaveArticle,
+  onRemoveArticle,
+  isSaved,
+}) {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
 
   const handleSaveClick = (e) => {
     e.preventDefault();
@@ -12,9 +18,11 @@ function NewsCard({ article, isLoggedIn }) {
       setShowTooltip(true);
       setTimeout(() => setShowTooltip(false), 3000); // Hide tooltip after 3 seconds
     } else {
-      setIsSaved(!isSaved);
-      // Implement save functionality here
-      console.log("Article saved");
+      if (isSaved) {
+        onRemoveArticle(article);
+      } else {
+        onSaveArticle(article);
+      }
     }
   };
 
@@ -25,7 +33,7 @@ function NewsCard({ article, isLoggedIn }) {
         alt={article.title}
         className="news-card__image"
       />
-      <div
+      <button
         className={`news-card__save-button ${
           isLoggedIn && isSaved ? "news-card__save-button_saved" : ""
         }`}
@@ -34,8 +42,12 @@ function NewsCard({ article, isLoggedIn }) {
         {showTooltip && (
           <div className="news-card__tooltip">Sign in to save articles</div>
         )}
-        <img src={saveIcon} alt="Save article" />
-      </div>
+        <img
+          src={isSaved ? SavedIcon : SaveIcon}
+          alt={isSaved ? "Remove from saved" : "Save article"}
+          className="news-card__save-icon"
+        />
+      </button>
       <div className="news-card__content">
         <p className="news-card__date">
           {new Date(article.publishedAt).toLocaleDateString()}
