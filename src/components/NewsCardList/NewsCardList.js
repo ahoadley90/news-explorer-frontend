@@ -1,38 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewsCardList.css";
-import NewsCard from "../NewsCard/NewsCard"; // Make sure this import is correct
+import NewsCard from "../NewsCard/NewsCard";
+import SaveIcon from "../../images/Saveicon.svg"; // Adjust the path as necessary
 
-function NewsCardList() {
-  // This is just example data. In a real app, you'd fetch this from an API
-  const articles = [
-    {
-      title: "Example Article 1",
-      description: "This is a description",
-      url: "#",
-      urlToImage: "path/to/image1.jpg",
-      publishedAt: "2023-05-20",
-      source: { name: "Example Source" },
-    },
-    {
-      title: "Example Article 2",
-      description: "This is another description",
-      url: "#",
-      urlToImage: "path/to/image2.jpg",
-      publishedAt: "2023-05-21",
-      source: { name: "Another Source" },
-    },
-    // Add more example articles as needed
-  ];
+function NewsCardList({ news, isLoggedIn }) {
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  const showMore = () => {
+    setVisibleCards((prevVisibleCards) => prevVisibleCards + 3);
+  };
+
+  const handleSaveClick = () => {
+    if (!isLoggedIn) {
+      alert("Sign in to save articles");
+    }
+  };
 
   return (
     <section className="news-card-list">
       <h2 className="news-card-list__title">Search results</h2>
       <div className="news-card-list__cards">
-        {articles.map((article, index) => (
-          <NewsCard key={index} article={article} />
-        ))}
+        {news && news.length > 0 ? (
+          news
+            .slice(0, visibleCards)
+            .map((article, index) => (
+              <NewsCard key={index} article={article} isLoggedIn={isLoggedIn} />
+            ))
+        ) : (
+          <p>No articles found. Try a different search term.</p>
+        )}
       </div>
-      <button className="news-card-list__button">Show more</button>
+      {news && visibleCards < news.length && (
+        <button className="news-card-list__button" onClick={showMore}>
+          Show more
+        </button>
+      )}
     </section>
   );
 }

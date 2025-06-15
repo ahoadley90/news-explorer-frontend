@@ -4,12 +4,20 @@ const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
 
 export const getNews = async (keyword) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/everything?q=${keyword}&apiKey=${API_KEY}`
-    );
-    if (!response.ok) {
-      throw new Error("News request failed");
+    if (!keyword.trim()) {
+      throw new Error("Keyword is empty");
     }
+
+    const response = await fetch(
+      `${BASE_URL}/everything?q=${encodeURIComponent(
+        keyword
+      )}&apiKey=${API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`News request failed with status ${response.status}`);
+    }
+
     const data = await response.json();
     return data.articles; // Return just the articles array
   } catch (error) {

@@ -47,14 +47,21 @@ function App() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    if (!searchQuery.trim()) {
+      setSearchError("Please enter a search term");
+      return;
+    }
     setIsLoading(true);
     setSearchError(null);
+    setNews([]); // Clear existing articles before search
     try {
+      console.log("Searching for:", searchQuery);
       const articles = await getNews(searchQuery);
+      console.log("Received articles:", articles);
       setNews(articles);
     } catch (error) {
       console.error("Error searching news:", error);
-      setSearchError("Failed to fetch news. Please try again.");
+      setSearchError(`Failed to fetch news: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -134,6 +141,7 @@ function App() {
                 news={news}
                 isLoading={isLoading}
                 searchError={searchError}
+                isLoggedIn={isLoggedIn}
               />
             }
           />

@@ -11,6 +11,7 @@ function Main({
   news,
   isLoading,
   searchError,
+  isLoggedIn,
 }) {
   return (
     <main className="main">
@@ -30,7 +31,7 @@ function Main({
         </div>
       </section>
       {searchError && <p className="error">{searchError}</p>}
-      <NewsCardList news={news} />
+      <NewsCardList news={news} isLoggedIn={isLoggedIn} />
       <About />
     </main>
   );

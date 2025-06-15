@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchForm.css";
 
-function SearchForm({ onSearch, isLoading }) {
-  const [searchQuery, setSearchQuery] = useState("");
+function SearchForm({ onSearch, searchQuery, setSearchQuery, isLoading }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      onSearch(e);
+    }
+  };
 
   return (
-    <form onSubmit={onSearch} className="search-form">
+    <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
         value={searchQuery}
@@ -16,7 +21,7 @@ function SearchForm({ onSearch, isLoading }) {
       <button
         type="submit"
         className="search-form__button"
-        disabled={isLoading}
+        disabled={isLoading || !searchQuery.trim()}
       >
         {isLoading ? "Searching..." : "Search"}
       </button>
