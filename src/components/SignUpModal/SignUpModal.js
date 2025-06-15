@@ -6,6 +6,8 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [signUpError, setSignUpError] = useState("");
 
   useEffect(() => {
     setIsFormValid(
@@ -13,13 +15,37 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
     );
   }, [email, password, username]);
 
-  const handleSubmit = (e) => {
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (!validateEmail(e.target.value)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      onSignUp(email, password, username);
+    if (!validateEmail(email)) {
+      setEmailError("Invalid email address");
+      return;
+    }
+    try {
+      await onSignUp(email, password, username);
       setEmail("");
       setPassword("");
       setUsername("");
+    } catch (error) {
+      if (error.message.includes("email already in use")) {
+        setSignUpError("This email is not available");
+      } else {
+        setSignUpError(error.message);
+      }
     }
   };
 
@@ -28,6 +54,8 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
       setEmail("");
       setPassword("");
       setUsername("");
+      setEmailError("");
+      setSignUpError("");
     }
   }, [isOpen]);
 
@@ -49,11 +77,12 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
                 className="modal__input"
                 placeholder="Enter email"
                 required
               />
+              {emailError && <span className="modal__error">{emailError}</span>}
             </label>
             <label className="modal__label">
               Password
@@ -77,6 +106,7 @@ function SignUpModal({ isOpen, onClose, onSignUp, openSignIn }) {
                 required
               />
             </label>
+            {signUpError && <span className="modal__error">{signUpError}</span>}
             <button
               type="submit"
               className={`modal__submit ${

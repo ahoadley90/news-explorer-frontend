@@ -33,7 +33,7 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
       setActiveModal("registrationSuccess");
     } catch (error) {
       console.error("Sign up error in Header:", error);
-      alert(`Sign up failed: ${error.message || "Unknown error occurred"}`);
+      throw error; // Propagate the error to be handled in the SignUpModal
     }
   };
 
