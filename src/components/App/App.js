@@ -19,6 +19,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [userName, setUserName] = useState("");
   const [news, setNews] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState(null);
@@ -33,10 +34,16 @@ function App() {
         setIsLoggedIn(true);
         setCurrentUser(user);
         setUserName(user.displayName || user.email);
+        // Load saved articles from localStorage
+        const storedArticles = JSON.parse(
+          localStorage.getItem("savedArticles") || "[]"
+        );
+        setSavedArticles(storedArticles);
       } else {
         setIsLoggedIn(false);
         setCurrentUser(null);
         setUserName("");
+        setSavedArticles([]);
       }
     });
 
@@ -99,6 +106,33 @@ function App() {
     }
   }, []);
 
+  const handleSaveArticle = useCallback((articleToSave) => {
+    setSavedArticles((prevArticles) => {
+      const isAlreadySaved = prevArticles.some(
+        (article) => article.url === articleToSave.url
+      );
+      if (!isAlreadySaved) {
+        const updatedArticles = [
+          ...prevArticles,
+          { ...articleToSave, _id: Date.now().toString() },
+        ];
+        localStorage.setItem("savedArticles", JSON.stringify(updatedArticles));
+        return updatedArticles;
+      }
+      return prevArticles;
+    });
+  }, []);
+
+  const handleRemoveArticle = useCallback((articleToRemove) => {
+    setSavedArticles((prevArticles) => {
+      const updatedArticles = prevArticles.filter(
+        (article) => article.url !== articleToRemove.url
+      );
+      localStorage.setItem("savedArticles", JSON.stringify(updatedArticles));
+      return updatedArticles;
+    });
+  }, []);
+
   return (
     <Router>
       <div className="app">
@@ -121,10 +155,22 @@ function App() {
                 isLoading={isLoading}
                 searchError={searchError}
                 isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+                onSaveArticle={handleSaveArticle}
+                onRemoveArticle={handleRemoveArticle}
               />
             }
           />
-          <Route path="/saved-news" element={<SavedNews />} />
+          <Route
+            path="/saved-news"
+            element={
+              <SavedNews
+                savedArticles={savedArticles}
+                userName={userName}
+                onRemoveArticle={handleRemoveArticle}
+              />
+            }
+          />
         </Routes>
         <Footer />
         <SignInModal

@@ -1,5 +1,5 @@
 .news-card-list {
-  background: #f5f6f7;
+  background-color: #f5f6f7;
   padding: 80px 0;
 }
 
@@ -21,26 +21,28 @@
   margin: 0 auto;
   padding: 0 16px;
   justify-items: center;
+  margin-bottom: 64px;
 }
 
 .news-card-list__button {
   display: block;
-  margin: 64px auto 0;
+  width: 288px;
+  height: 64px;
+  margin: 0 auto;
   background: #ffffff;
-  border: 1px solid #1a1b22;
-  box-sizing: border-box;
   border-radius: 80px;
-  padding: 20px 80px;
+  border: none;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #1a1b22;
   cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
 .news-card-list__button:hover {
-  background: #e8e8e8;
+  opacity: 0.8;
 }
 
 @media (max-width: 1280px) {

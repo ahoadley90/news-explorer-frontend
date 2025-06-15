@@ -1,7 +1,7 @@
 import React from "react";
 import "./SavedNewsHeader.css";
 
-function SavedNewsHeader({ userName, savedArticles }) {
+function SavedNewsHeader({ userName, savedArticles = [] }) {
   const keywordCounts = savedArticles.reduce((acc, article) => {
     acc[article.keyword] = (acc[article.keyword] || 0) + 1;
     return acc;
