@@ -2,8 +2,9 @@ import React from "react";
 import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import NoResults from "../NoResults/NoResults";
+import Preloader from "../Preloader/PreLoader";
 import About from "../About/About";
-import NewsCard from "../NewsCard/NewsCard"; // Add this line
 
 function Main({
   onSearch,
@@ -34,28 +35,28 @@ function Main({
           />
         </div>
       </section>
-      {searchError && <p className="error">{searchError}</p>}
-      <NewsCardList
-        news={news}
-        isLoggedIn={isLoggedIn}
-        savedArticles={savedArticles}
-        onSaveArticle={onSaveArticle}
-        onRemoveArticle={onRemoveArticle}
-      >
-        {news.map((article) => (
-          <NewsCard
-            key={article.url}
-            article={article}
+      <section className="search-results">
+        {isLoading && <Preloader />}
+
+        {!isLoading && searchError && (
+          <p className="search-results__error">{searchError}</p>
+        )}
+
+        {!isLoading && !searchError && news.length === 0 && searchQuery && (
+          <NoResults />
+        )}
+
+        {!isLoading && !searchError && news.length > 0 && (
+          <NewsCardList
+            news={news}
             isLoggedIn={isLoggedIn}
-            isSaved={savedArticles.some(
-              (savedArticle) => savedArticle.url === article.url
-            )}
+            savedArticles={savedArticles}
             onSaveArticle={onSaveArticle}
             onRemoveArticle={onRemoveArticle}
-            keyword={searchQuery} // Pass the current search query as the keyword
+            searchQuery={searchQuery}
           />
-        ))}
-      </NewsCardList>
+        )}
+      </section>
       <About />
     </main>
   );

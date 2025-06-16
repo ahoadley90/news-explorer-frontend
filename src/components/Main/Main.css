@@ -1,5 +1,6 @@
 .main {
   min-height: 100vh;
+  flex-grow: 1;
 }
 
 .hero {
@@ -40,4 +41,38 @@
 .hero .search-form {
   margin: 0;
   width: 100%;
+}
+
+.search-results {
+  background-color: #f5f6f7;
+  padding: 80px 0;
+}
+
+.search-results__error {
+  text-align: center;
+  color: #ff0000;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 48px;
+  }
+
+  .search-results {
+    padding: 40px 0;
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
+import "./NewsCardList.css";
 
 function NewsCardList({
   news,
@@ -8,44 +8,37 @@ function NewsCardList({
   savedArticles,
   onSaveArticle,
   onRemoveArticle,
+  searchQuery,
 }) {
   const [visibleCards, setVisibleCards] = useState(3);
 
-  const showMore = () => {
-    setVisibleCards((prevVisibleCards) => prevVisibleCards + 3);
+  const handleShowMore = () => {
+    setVisibleCards((prevVisible) => prevVisible + 3);
   };
-
-  const isArticleSaved = (article) => {
-    return savedArticles.some(
-      (savedArticle) => savedArticle.url === article.url
-    );
-  };
-
-  if (news.length === 0) {
-    return null; // Don't render anything if there are no news articles
-  }
 
   return (
-    <section className="news-card-list">
-      <h2 className="news-card-list__title">Search results</h2>
+    <div className="news-card-list">
       <div className="news-card-list__cards">
         {news.slice(0, visibleCards).map((article) => (
           <NewsCard
             key={article.url}
             article={article}
             isLoggedIn={isLoggedIn}
-            isSaved={isArticleSaved(article)}
-            onSaveArticle={() => onSaveArticle(article)}
-            onRemoveArticle={() => onRemoveArticle(article)}
+            isSaved={savedArticles.some(
+              (savedArticle) => savedArticle.url === article.url
+            )}
+            onSaveArticle={onSaveArticle}
+            onRemoveArticle={onRemoveArticle}
+            keyword={searchQuery}
           />
         ))}
       </div>
       {visibleCards < news.length && (
-        <button className="news-card-list__button" onClick={showMore}>
+        <button className="news-card-list__button" onClick={handleShowMore}>
           Show more
         </button>
       )}
-    </section>
+    </div>
   );
 }
 
