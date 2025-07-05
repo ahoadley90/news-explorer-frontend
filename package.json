@@ -1,15 +1,18 @@
 {
+  "homepage": "https://ahoadley90.github.io/news-explorer-frontend",
   "name": "news-explorer-frontend",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@remix-run/router": "^1.0.0",
     "firebase": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.0.0",
-    "@remix-run/router": "^1.0.0"
+    "react-router-dom": "^6.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +41,7 @@
     "@babel/eslint-parser": "^7.22.5",
     "eslint": "^8.42.0",
     "eslint-config-react-app": "^7.0.1",
+    "gh-pages": "^6.3.0",
     "react-scripts": "5.0.1"
   }
 }

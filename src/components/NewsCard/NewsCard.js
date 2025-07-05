@@ -15,6 +15,11 @@ function NewsCard({
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("en-US", options);
+  };
+
   const handleSaveClick = (e) => {
     e.preventDefault();
     if (!isLoggedIn) {
@@ -102,9 +107,7 @@ function NewsCard({
         </div>
       </div>
       <div className="news-card__content">
-        <p className="news-card__date">
-          {new Date(article.publishedAt).toLocaleDateString()}
-        </p>
+        <p className="news-card__date">{formatDate(article.publishedAt)}</p>
         <h3 className="news-card__title">{article.title}</h3>
         <p className="news-card__text">{article.description}</p>
         <p className="news-card__source">{article.source.name}</p>
