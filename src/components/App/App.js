@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { getNews } from "../../utils/api";
 import { auth } from "../../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";

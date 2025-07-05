@@ -3,7 +3,7 @@ import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import NoResults from "../NoResults/NoResults";
-import Preloader from "../Preloader/PreLoader";
+import PreLoader from "../PreLoader/PreLoader";
 import About from "../About/About";
 
 function Main({
@@ -36,16 +36,13 @@ function Main({
         </div>
       </section>
       <section className="search-results">
-        {isLoading && <Preloader />}
-
+        {isLoading && <PreLoader />}
         {!isLoading && searchError && (
           <p className="search-results__error">{searchError}</p>
         )}
-
         {!isLoading && !searchError && news.length === 0 && searchQuery && (
           <NoResults />
         )}
-
         {!isLoading && !searchError && news.length > 0 && (
           <NewsCardList
             news={news}

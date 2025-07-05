@@ -1,7 +1,7 @@
 import React from "react";
-import "./PreLoader.css"; // Make sure this matches the actual filename
+import "./PreLoader.css";
 
-function Preloader() {
+function PreLoader() {
   return (
     <div className="preloader">
       <div className="preloader__circle"></div>
@@ -10,4 +10,4 @@ function Preloader() {
   );
 }
 
-export default Preloader;
+export default PreLoader;
