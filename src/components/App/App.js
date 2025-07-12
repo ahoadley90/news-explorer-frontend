@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import SignInModal from "../SignInModal/SignInModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -63,27 +64,30 @@ function App() {
     console.log("App: currentUser changed to", authState.currentUser);
   }, [authState.isLoggedIn, authState.currentUser]);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) {
-      setSearchError("Please enter a search term");
-      return;
-    }
-    setIsLoading(true);
-    setSearchError(null);
-    setNews([]); // Clear existing articles before search
-    try {
-      console.log("Searching for:", searchQuery);
-      const articles = await getNews(searchQuery);
-      console.log("Received articles:", articles);
-      setNews(articles);
-    } catch (error) {
-      console.error("Error searching news:", error);
-      setSearchError(`Failed to fetch news: ${error.message}`);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const handleSearch = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (!searchQuery.trim()) {
+        setSearchError("Please enter a search term");
+        return;
+      }
+      setIsLoading(true);
+      setSearchError(null);
+      setNews([]); // Clear existing articles before search
+      try {
+        console.log("Searching for:", searchQuery);
+        const articles = await getNews(searchQuery);
+        console.log("Received articles:", articles);
+        setNews(articles);
+      } catch (error) {
+        console.error("Error searching news:", error);
+        setSearchError(`Failed to fetch news: ${error.message}`);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [searchQuery, setNews, setIsLoading, setSearchError, getNews]
+  );
 
   const handleSignIn = useCallback(async (email, password) => {
     try {
