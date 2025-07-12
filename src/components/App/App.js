@@ -13,7 +13,6 @@ import Footer from "../Footer/Footer";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import SignInModal from "../SignInModal/SignInModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
-import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -86,7 +85,7 @@ function App() {
         setIsLoading(false);
       }
     },
-    [searchQuery, setNews, setIsLoading, setSearchError, getNews]
+    [searchQuery, setNews, setIsLoading, setSearchError]
   );
 
   const handleSignIn = useCallback(async (email, password) => {
