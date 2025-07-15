@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 10;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  height: 80px; /* Set a fixed height */
+  height: 80px;
 }
 
 .header_saved-news {
@@ -40,6 +40,7 @@
 .header__nav {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .header__nav-link {
@@ -50,7 +51,6 @@
   text-decoration: none;
   margin-right: 34px;
   position: relative;
-  height: 100%;
   display: flex;
   align-items: center;
 }
