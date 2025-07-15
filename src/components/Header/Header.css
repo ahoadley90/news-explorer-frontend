@@ -55,7 +55,7 @@
 
 .header__nav-link_active {
   border-bottom: 3px solid #ffffff;
-  padding-bottom: 5px;
+  padding-bottom: 28px;
 }
 
 .header_saved-news .header__nav-link_active {
@@ -98,5 +98,12 @@
 
   .header__nav {
     margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__content {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

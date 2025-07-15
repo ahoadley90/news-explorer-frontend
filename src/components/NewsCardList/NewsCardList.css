@@ -13,7 +13,7 @@
   line-height: 46px;
   color: #1a1b22;
   margin: 0 0 64px;
-  text-align: center;
+  text-align: left;
 }
 
 .news-card-list__cards {
@@ -21,13 +21,14 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
+  margin-bottom: 64px;
 }
 
 .news-card-list__button {
   display: block;
   width: 288px;
   height: 64px;
-  margin: 0 auto;
+  margin: 64px auto 0;
   background: #ffffff;
   border-radius: 80px;
   border: none;
@@ -53,5 +54,13 @@
 @media (max-width: 768px) {
   .news-card-list__cards {
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .news-card-list__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-left: 16px;
   }
 }
