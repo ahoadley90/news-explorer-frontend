@@ -4,6 +4,7 @@
   position: absolute;
   width: 100%;
   z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header_saved-news {
@@ -54,6 +55,7 @@
 
 .header__nav-link_active {
   border-bottom: 3px solid #ffffff;
+  padding-bottom: 5px;
 }
 
 .header_saved-news .header__nav-link_active {

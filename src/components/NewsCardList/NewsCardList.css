@@ -17,10 +17,10 @@
 }
 
 .news-card-list__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
-  margin-bottom: 64px;
 }
 
 .news-card-list__button {

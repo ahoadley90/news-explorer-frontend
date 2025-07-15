@@ -7,9 +7,13 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Roboto Slab", sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Add any other global styles */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

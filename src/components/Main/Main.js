@@ -35,25 +35,30 @@ function Main({
           />
         </div>
       </section>
-      <section className="search-results">
-        {isLoading && <PreLoader />}
-        {!isLoading && searchError && (
-          <p className="search-results__error">{searchError}</p>
-        )}
-        {!isLoading && !searchError && news.length === 0 && searchQuery && (
-          <NoResults />
-        )}
-        {!isLoading && !searchError && news.length > 0 && (
-          <NewsCardList
-            news={news}
-            isLoggedIn={isLoggedIn}
-            savedArticles={savedArticles}
-            onSaveArticle={onSaveArticle}
-            onRemoveArticle={onRemoveArticle}
-            searchQuery={searchQuery}
-          />
-        )}
-      </section>
+      {(isLoading ||
+        searchError ||
+        news.length > 0 ||
+        (news.length === 0 && searchQuery)) && (
+        <section className="search-results">
+          {isLoading && <PreLoader />}
+          {!isLoading && searchError && (
+            <p className="search-results__error">{searchError}</p>
+          )}
+          {!isLoading && !searchError && news.length === 0 && searchQuery && (
+            <NoResults />
+          )}
+          {!isLoading && !searchError && news.length > 0 && (
+            <NewsCardList
+              news={news}
+              isLoggedIn={isLoggedIn}
+              savedArticles={savedArticles}
+              onSaveArticle={onSaveArticle}
+              onRemoveArticle={onRemoveArticle}
+              searchQuery={searchQuery}
+            />
+          )}
+        </section>
+      )}
       <About />
     </main>
   );
