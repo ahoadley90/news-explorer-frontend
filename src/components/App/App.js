@@ -30,6 +30,14 @@ function App() {
     isSignUpModalOpen: false,
     isRegistrationSuccessModalOpen: false,
   });
+  const simulateLogin = () => {
+    setAuthState((prevState) => ({
+      ...prevState,
+      isLoggedIn: true,
+      userName: "Test User",
+      currentUser: { displayName: "Test User" }, // Simulating a user object
+    }));
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -212,6 +220,17 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <button
+          onClick={simulateLogin}
+          style={{
+            position: "fixed",
+            top: "10px",
+            right: "10px",
+            zIndex: 1000,
+          }}
+        >
+          Simulate Login
+        </button>
         <Header {...headerProps} />
         <Routes>
           <Route path="/" element={<Main {...mainProps} />} />
