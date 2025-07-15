@@ -215,10 +215,12 @@ function App() {
         <Header {...headerProps} />
         <Routes>
           <Route path="/" element={<Main {...mainProps} />} />
-          <Route
-            path="/saved-news"
-            element={<SavedNews {...savedNewsProps} />}
-          />
+          {authState.isLoggedIn && (
+            <Route
+              path="/saved-news"
+              element={<SavedNews {...savedNewsProps} />}
+            />
+          )}
         </Routes>
         <Footer />
         <SignInModal

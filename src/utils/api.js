@@ -1,4 +1,3 @@
-//const BASE_URL = "https://newsapi.org/v2";//
 const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
 const newsApiBaseUrl =
   process.env.NODE_ENV === "production"
@@ -6,10 +5,6 @@ const newsApiBaseUrl =
     : "https://newsapi.org/v2/everything";
 
 export const getNews = async (keyword) => {
-  if (!keyword.trim()) {
-    throw new Error("Keyword is empty");
-  }
-
   const today = new Date();
   const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
 
