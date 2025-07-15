@@ -74,11 +74,7 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
             {isMenuOpen ? "✕" : "☰"}
           </button>
         )}
-        <nav
-          className={`header__nav ${
-            isMobile && !isMenuOpen ? "header__nav_hidden" : ""
-          }`}
-        >
+        <nav className={`header__nav ${isMenuOpen ? "header__nav_open" : ""}`}>
           <Link
             to="/"
             className={`header__nav-link ${
