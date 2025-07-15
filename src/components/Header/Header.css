@@ -1,13 +1,11 @@
 .header {
   background-color: rgba(196, 196, 196, 0.01);
-  padding: 16px 0;
+  padding: 0;
   position: absolute;
   width: 100%;
   z-index: 10;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  height: 80px;
-  display: flex;
-  align-items: center;
+  height: 80px; /* Set a fixed height */
 }
 
 .header_saved-news {
@@ -17,9 +15,10 @@
 }
 
 .header__content {
-  max-width: 1280px;
+  max-width: 1440px;
+  height: 100%;
   margin: 0 auto;
-  padding: 0 104px; /* Increase padding to push content to sides */
+  padding: 0 104px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,6 +40,7 @@
 .header__nav {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .header__nav-link {
@@ -51,6 +51,9 @@
   text-decoration: none;
   margin-right: 34px;
   position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .header_saved-news .header__nav-link {
@@ -64,7 +67,7 @@
 .header__nav-link_active::after {
   content: "";
   position: absolute;
-  bottom: -28px; /* Adjust this value to align with the header's bottom border */
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 3px;
@@ -105,13 +108,13 @@
 
 @media screen and (max-width: 1024px) {
   .header__content {
-    padding: 0 40px; /* Reduce padding for smaller screens */
+    padding: 0 40px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .header__content {
-    padding: 0 20px; /* Further reduce padding for mobile */
+    padding: 0 20px;
   }
 
   .header__nav-link {
@@ -119,7 +122,7 @@
   }
 
   .header__nav-link_active::after {
-    bottom: -24px; /* Adjust for smaller screens */
+    bottom: -16px; /* Keep it consistent with larger screens */
   }
 }
 
@@ -132,14 +135,21 @@
   .header__content {
     flex-direction: column;
     align-items: flex-start;
+    padding: 16px 20px;
   }
 
   .header__nav {
     margin-top: 16px;
     width: 100%;
+    height: auto;
+  }
+
+  .header__nav-link {
+    height: auto;
+    padding-bottom: 8px;
   }
 
   .header__nav-link_active::after {
-    bottom: -8px; /* Adjust for mobile screens */
+    bottom: 0;
   }
 }
