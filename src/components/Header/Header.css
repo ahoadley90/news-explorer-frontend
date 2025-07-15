@@ -128,20 +128,16 @@
 @media screen and (max-width: 480px) {
   .header {
     height: 56px;
-    padding: 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(26, 27, 34, 0.5);
-    backdrop-filter: blur(8px);
-    border-bottom: none;
+    background-color: #1a1b22;
     z-index: 1000;
   }
 
   .header_menu-open {
-    height: 100%;
-    background-color: #1a1b22;
+    height: 100vh;
   }
 
   .header__content {
@@ -177,7 +173,6 @@
     bottom: 0;
     background-color: #1a1b22;
     padding: 16px;
-    overflow-y: auto;
   }
 
   .header__nav_open {
@@ -189,9 +184,9 @@
     line-height: 56px;
     color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0 16px;
     margin-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .header__nav-link:last-of-type {
@@ -205,7 +200,7 @@
     background: transparent;
     border: 1px solid #fff;
     color: #fff;
-    padding: 16px;
+    padding: 12px;
     font-size: 18px;
     line-height: 24px;
     border-radius: 100px;
