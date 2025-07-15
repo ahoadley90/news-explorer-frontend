@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import SignInModal from "../SignInModal/SignInModal";
@@ -8,9 +8,12 @@ import logoutIcon from "../../images/logout.svg";
 
 function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
   const [activeModal, setActiveModal] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
   const openModal = (modalName) => {
     setActiveModal(modalName);
+    setIsMenuOpen(false);
   };
 
   const closeModal = () => {
@@ -33,25 +36,55 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
       setActiveModal("registrationSuccess");
     } catch (error) {
       console.error("Sign up error in Header:", error);
-      throw error; // Propagate the error to be handled in the SignUpModal
+      throw error;
     }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const location = useLocation();
   const isSavedNewsPage = location.pathname === "/saved-news";
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+      if (window.innerWidth > 480) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <header className={`header ${isSavedNewsPage ? "header_saved-news" : ""}`}>
+    <header
+      className={`header ${isSavedNewsPage ? "header_saved-news" : ""} ${
+        isMenuOpen ? "header_menu-open" : ""
+      }`}
+    >
       <div className="header__content">
         <Link to="/" className="header__logo">
           NewsExplorer
         </Link>
-        <nav className="header__nav">
+        {isMobile && (
+          <button className="header__menu-button" onClick={toggleMenu}>
+            {isMenuOpen ? "✕" : "☰"}
+          </button>
+        )}
+        <nav
+          className={`header__nav ${
+            isMobile && !isMenuOpen ? "header__nav_hidden" : ""
+          }`}
+        >
           <Link
             to="/"
             className={`header__nav-link ${
               !isSavedNewsPage ? "header__nav-link_active" : ""
             }`}
+            onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
@@ -61,6 +94,7 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
               className={`header__nav-link ${
                 isSavedNewsPage ? "header__nav-link_active" : ""
               }`}
+              onClick={() => setIsMenuOpen(false)}
             >
               Saved articles
             </Link>
