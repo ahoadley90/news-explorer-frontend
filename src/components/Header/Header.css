@@ -134,12 +134,15 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: #1a1b22;
-    transition: height 0.3s ease;
+    background-color: rgba(26, 27, 34, 0.5);
+    backdrop-filter: blur(8px);
+    border-bottom: none;
+    z-index: 1000;
   }
 
   .header_menu-open {
     height: 100vh;
+    background-color: #1a1b22;
   }
 
   .header__content {
@@ -162,10 +165,11 @@
     color: #fff;
     font-size: 24px;
     cursor: pointer;
+    padding: 0;
   }
 
   .header__nav {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 56px;
@@ -174,12 +178,10 @@
     bottom: 0;
     background-color: #1a1b22;
     padding: 16px;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
-  .header__nav_hidden {
-    opacity: 0;
-    visibility: hidden;
+  .header_menu-open .header__nav {
+    display: flex;
   }
 
   .header__nav-link {
@@ -188,6 +190,8 @@
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 16px;
+    margin-right: 0;
   }
 
   .header__nav-link:last-of-type {
@@ -196,12 +200,12 @@
 
   .header__button {
     margin-top: 22px;
-    width: 100%;
+    width: calc(100% - 32px);
     justify-content: center;
     background: transparent;
     border: 1px solid #fff;
     color: #fff;
-    padding: 12px;
+    padding: 16px;
     font-size: 18px;
     line-height: 24px;
     border-radius: 100px;
