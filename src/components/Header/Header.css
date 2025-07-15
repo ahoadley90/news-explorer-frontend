@@ -122,7 +122,7 @@
   }
 
   .header__nav-link_active::after {
-    bottom: -16px; /* Keep it consistent with larger screens */
+    bottom: 0;
   }
 }
 
