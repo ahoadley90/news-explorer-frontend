@@ -171,6 +171,7 @@
     top: 56px;
     left: 0;
     right: 0;
+    bottom: 0;
     background-color: #1a1b22;
     padding: 16px;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -189,7 +190,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .header__nav-link:last-child {
+  .header__nav-link:last-of-type {
     border-bottom: none;
   }
 
@@ -205,5 +206,9 @@
     line-height: 24px;
     border-radius: 100px;
     cursor: pointer;
+  }
+
+  .header__nav-link_active {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
