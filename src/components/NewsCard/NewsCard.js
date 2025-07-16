@@ -10,8 +10,8 @@ function NewsCard({
   isSaved,
   onSaveArticle,
   onRemoveArticle,
-  keyword, // Add this prop
-  isSavedNewsPage = false, // New prop to determine if we're on the saved news page
+  keyword,
+  isSavedNewsPage = false,
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
