@@ -53,6 +53,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 .header_saved-news .header__nav-link {
@@ -60,7 +62,7 @@
 }
 
 .header__nav-link_active {
-  /* Remove any padding or border here */
+  border-bottom-color: #fff;
 }
 
 .header__nav-link_active::after {
