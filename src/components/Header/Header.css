@@ -127,7 +127,13 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 600px) {
+  .header__content {
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .header__nav {
     display: none;
   }
@@ -148,7 +154,7 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: unset;
     background-color: #1a1b22;
     z-index: 1000;
   }

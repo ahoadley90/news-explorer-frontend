@@ -28,7 +28,7 @@
   }
 
   .saved-news__container {
-    max-width: calc(100% - 80px); /* Ensures 40px margin on both sides */
+    max-width: calc(100% - 80px);
   }
 
   .saved-news__articles {
@@ -37,7 +37,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .saved-news {
     padding: 16px 0 24px;
   }
