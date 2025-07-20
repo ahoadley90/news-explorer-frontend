@@ -1,6 +1,6 @@
 .saved-news {
   background-color: #f5f6f7;
-  padding: 40px 0;
+  padding: 40px 0 62px;
 }
 
 .saved-news__container {
@@ -24,7 +24,7 @@
 
 @media screen and (max-width: 768px) {
   .saved-news {
-    padding: 24px 0;
+    padding: 24px 0 32px;
   }
 
   .saved-news__container {
@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 320px) {
   .saved-news {
-    padding: 16px 0;
+    padding: 16px 0 24px;
   }
 
   .saved-news__container {
