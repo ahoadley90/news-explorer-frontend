@@ -17,11 +17,17 @@
 }
 
 .news-card-list__cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
   margin-bottom: 64px;
+}
+
+.news-card-list__cards li {
+  display: contents;
 }
 
 .news-card-list__button {

@@ -17,29 +17,30 @@ function NewsCardList({
   };
 
   return (
-    <div className="news-card-list">
+    <section className="news-card-list">
       <h2 className="news-card-list__title">Search results</h2>
-      <div className="news-card-list__cards">
+      <ul className="news-card-list__cards">
         {news.slice(0, visibleCards).map((article) => (
-          <NewsCard
-            key={article.url}
-            article={article}
-            isLoggedIn={isLoggedIn}
-            isSaved={savedArticles.some(
-              (savedArticle) => savedArticle.url === article.url
-            )}
-            onSaveArticle={onSaveArticle}
-            onRemoveArticle={onRemoveArticle}
-            keyword={searchQuery}
-          />
+          <li key={article.url}>
+            <NewsCard
+              article={article}
+              isLoggedIn={isLoggedIn}
+              isSaved={savedArticles.some(
+                (savedArticle) => savedArticle.url === article.url
+              )}
+              onSaveArticle={onSaveArticle}
+              onRemoveArticle={onRemoveArticle}
+              keyword={searchQuery}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
       {visibleCards < news.length && (
         <button className="news-card-list__button" onClick={handleShowMore}>
           Show more
         </button>
       )}
-    </div>
+    </section>
   );
 }
 

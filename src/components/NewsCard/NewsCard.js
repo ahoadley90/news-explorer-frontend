@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NewsCard.css";
 import SaveIcon from "../../images/Saveicon.svg";
 import SavedIcon from "../../images/SavedIcon.svg";
-import TrashIcon from "../../images/trash.svg"; // Make sure you have this icon in your images folder
+import TrashIcon from "../../images/trash.svg";
 
 function NewsCard({
   article,
@@ -24,7 +24,7 @@ function NewsCard({
     e.preventDefault();
     if (!isLoggedIn) {
       setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 3000); // Hide tooltip after 3 seconds
+      setTimeout(() => setShowTooltip(false), 3000);
     } else {
       if (isSaved) {
         onRemoveArticle(article);
@@ -81,7 +81,7 @@ function NewsCard({
   };
 
   return (
-    <div className="news-card">
+    <article className="news-card">
       <div className="news-card__image-container">
         <img
           src={article.urlToImage}
@@ -107,12 +107,14 @@ function NewsCard({
         </div>
       </div>
       <div className="news-card__content">
-        <p className="news-card__date">{formatDate(article.publishedAt)}</p>
+        <time className="news-card__date" dateTime={article.publishedAt}>
+          {formatDate(article.publishedAt)}
+        </time>
         <h3 className="news-card__title">{article.title}</h3>
         <p className="news-card__text">{article.description}</p>
         <p className="news-card__source">{article.source.name}</p>
       </div>
-    </div>
+    </article>
   );
 }
 
