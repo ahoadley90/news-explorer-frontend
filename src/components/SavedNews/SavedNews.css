@@ -23,12 +23,32 @@
 }
 
 @media screen and (max-width: 768px) {
+  .saved-news {
+    padding: 24px 0;
+  }
+
+  .saved-news__container {
+    max-width: 728px;
+    padding: 0 20px;
+  }
+
   .saved-news__articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
 }
-@media (max-width: 320px) {
+
+@media screen and (max-width: 320px) {
   .saved-news {
-    padding: 0 4px;
+    padding: 16px 0;
+  }
+
+  .saved-news__container {
+    padding: 0 16px;
+  }
+
+  .saved-news__articles {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
