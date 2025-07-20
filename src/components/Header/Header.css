@@ -127,15 +127,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
-  .header {
-    position: relative;
-  }
-
-  .header__content {
-    padding: 16px;
-  }
-
+@media (max-width: 320px) {
   .header__nav {
     display: none;
   }
