@@ -6,7 +6,14 @@ import SignUpModal from "../SignUpModal/SignUpModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 import logoutIcon from "../../images/logout.svg";
 
-function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
+function Header({
+  isLoggedIn,
+  onSignOut,
+  userName,
+  onSignIn,
+  onSignUp,
+  simulateLogin,
+}) {
   const [activeModal, setActiveModal] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
@@ -113,6 +120,9 @@ function Header({ isLoggedIn, onSignOut, userName, onSignIn, onSignUp }) {
             </button>
           )}
         </nav>
+        <button className="header__simulate-login" onClick={simulateLogin}>
+          Simulate Login
+        </button>
       </div>
       <SignInModal
         isOpen={activeModal === "signIn"}

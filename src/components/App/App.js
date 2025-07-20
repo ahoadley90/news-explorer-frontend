@@ -171,6 +171,7 @@ function App() {
       userName: authState.userName,
       onSignIn: handleSignIn,
       onSignUp: handleSignUp,
+      simulateLogin: simulateLogin,
     }),
     [
       authState.isLoggedIn,
@@ -220,17 +221,6 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <button
-          onClick={simulateLogin}
-          style={{
-            position: "fixed",
-            top: "10px",
-            right: "10px",
-            zIndex: 1000,
-          }}
-        >
-          Simulate Login
-        </button>
         <Header {...headerProps} />
         <Routes>
           <Route path="/" element={<Main {...mainProps} />} />
