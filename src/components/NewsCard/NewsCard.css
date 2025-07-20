@@ -142,3 +142,37 @@
     margin-bottom: 16px;
   }
 }
+
+@media (max-width: 320px) {
+  .news-card {
+    max-width: 288px;
+    height: auto;
+    min-height: 440px;
+  }
+
+  .news-card__image {
+    height: 196px;
+  }
+
+  .news-card__content {
+    padding: 16px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .news-card__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .news-card__date {
+    font-size: 16px;
+  }
+
+  .news-card__source {
+    font-size: 14px;
+  }
+}
