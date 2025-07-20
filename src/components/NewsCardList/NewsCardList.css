@@ -69,7 +69,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
   .news-card-list__cards {
     grid-template-columns: 1fr;
     max-width: 288px;

@@ -129,14 +129,12 @@
 
 @media screen and (max-width: 320px) {
   .header {
-    padding: 16px;
     position: relative;
     background-color: transparent;
   }
 
   .header_saved-news {
     background-color: #fff;
-    box-shadow: inset 0px -1px 0px #d1d2d6;
   }
 
   .header__content {
@@ -215,6 +213,8 @@
     line-height: 56px;
     margin-right: 0;
     margin-bottom: 22px;
+    width: 100%;
+    text-align: left;
   }
 
   .header_menu-open .header__button {
