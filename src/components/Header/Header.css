@@ -139,6 +139,23 @@
 }
 
 @media screen and (max-width: 320px) {
+  .header {
+    height: 56px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .header__logo {
+    font-size: 16px;
+  }
+
   .header__nav {
     display: none;
   }
@@ -146,29 +163,52 @@
   .header__nav.header__nav_open {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 56px;
     left: 0;
     right: 0;
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .header__nav-link,
-  .header__button {
-    margin-left: 0;
-    margin-bottom: 10px;
+    bottom: 0;
+    background-color: #1a1b22;
+    padding: 16px;
+    z-index: 1000;
   }
 
   .header__menu-button {
     display: block;
-    order: 2;
-    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    padding: 0;
+  }
+
+  .header_saved-news .header__menu-button {
+    color: #1a1b22;
+  }
+
+  .header__nav-link,
+  .header__button {
+    font-size: 18px;
+    line-height: 56px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 22px;
+  }
+
+  .header__button {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    height: 56px;
   }
 
   .header__simulate-login {
-    order: 3;
-    margin-top: 10px;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    top: auto;
+    width: calc(100% - 32px);
+    z-index: 1001;
   }
 }
