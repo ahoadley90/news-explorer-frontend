@@ -28,8 +28,7 @@
   }
 
   .saved-news__container {
-    max-width: calc(100% - 80px);
-    padding: 0 20px;
+    max-width: calc(100% - 80px); /* Ensures 40px margin on both sides */
   }
 
   .saved-news__articles {

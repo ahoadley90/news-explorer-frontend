@@ -138,12 +138,27 @@
 }
 
 @media screen and (max-width: 768px) {
+  .news-card {
+    height: 420px;
+    max-height: 420px;
+  }
+
   .news-card__image {
     height: 150px;
   }
 
   .news-card__content {
     padding: 16px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .news-card__description {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 @media (max-width: 320px) {

@@ -68,19 +68,12 @@
   }
 
   .news-card-list__container {
-    max-width: calc(100% - 80px);
+    max-width: calc(100% - 80px); /* Ensures 40px margin on both sides */
   }
 
   .news-card-list__cards {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-  }
-}
-
-@media (max-width: 620px) {
-  .news-card-list__cards {
-    grid-template-columns: 1fr;
-    max-width: 288px;
   }
 }
 
