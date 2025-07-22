@@ -1,6 +1,9 @@
 .saved-news {
   background-color: #f5f6f7;
   padding: 40px 0 62px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .saved-news__container {
@@ -44,6 +47,7 @@
 @media screen and (max-width: 600px) {
   .saved-news {
     padding: 16px 0 24px;
+    overflow-x: hidden;
   }
 
   .saved-news__container {
