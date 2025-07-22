@@ -76,3 +76,15 @@
     padding: 40px 0;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .hero__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .search-results__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
