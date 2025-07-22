@@ -166,7 +166,6 @@
     background-color: #1a1b22;
     padding: 16px;
     z-index: 1000;
-    align-items: flex-start;
   }
 
   .header__menu-button {
