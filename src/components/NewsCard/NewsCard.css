@@ -97,7 +97,13 @@
 .news-card__title {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
-  font-size: 26px;
+  font-size: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
   line-height: 30px;
   color: #1a1b22;
   margin: 0 0 16px;
@@ -108,8 +114,14 @@
   font-size: 16px;
   line-height: 22px;
   color: #1a1b22;
-  margin: 0 0 auto;
+  margin: 0 0 16px;
   flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .news-card__source {

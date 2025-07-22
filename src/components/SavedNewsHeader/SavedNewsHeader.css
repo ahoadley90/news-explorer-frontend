@@ -13,8 +13,8 @@
 
 .saved-news-header__title {
   font-family: "Roboto Slab", serif;
-  font-size: 40px;
-  line-height: 46px;
+  font-size: 18px;
+  line-height: 24px;
   color: #1a1b22;
   margin-bottom: 30px;
 }
@@ -28,4 +28,16 @@
 
 .saved-news-header__keywords-bold {
   font-weight: 700;
+}
+
+@media screen and (max-width: 320px) {
+  .saved-news-header__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .saved-news-header__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

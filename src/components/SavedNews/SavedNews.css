@@ -6,7 +6,7 @@
 .saved-news__container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .saved-news__articles {
@@ -19,6 +19,10 @@
 @media screen and (max-width: 1280px) {
   .saved-news__articles {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .saved-news__container {
+    max-width: 100%;
   }
 }
 
