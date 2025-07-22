@@ -39,8 +39,18 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .search-form__button:hover {
   background: #347eff;
+}
+
+.search-form__button:active {
+  background-color: #2a65cc;
+}
+
+.search-form__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 113, 229, 0.5);
 }
