@@ -54,3 +54,23 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(47, 113, 229, 0.5);
 }
+@media screen and (max-width: 600px) {
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-form__input {
+    margin-bottom: 16px;
+    border-radius: 16px;
+    height: 56px;
+  }
+
+  .search-form__button {
+    position: static;
+    width: 100%;
+    border-radius: 16px;
+    height: 56px;
+    padding: 0;
+  }
+}
