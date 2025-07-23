@@ -93,3 +93,28 @@
     overflow-x: hidden;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .hero {
+    height: 536px;
+    padding: 86px 16px 32px;
+    box-sizing: border-box;
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    max-width: 288px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 122px;
+  }
+}
