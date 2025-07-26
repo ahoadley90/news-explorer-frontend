@@ -48,15 +48,26 @@
 
 @media screen and (max-width: 600px) {
   .saved-news {
-    padding: 16px 10px 24px;
+    padding: 0px;
   }
 
   .saved-news__container {
     max-width: calc(100% - 32px);
+    padding: 0px;
   }
 
   .saved-news__articles {
     grid-template-columns: 1fr;
     gap: 10px;
+    margin-top: 24px;
+    padding: 0 16px;
+  }
+
+  .saved-news__articles > *:first-child {
+    margin-top: 24px;
+  }
+
+  .news-card {
+    margin-bottom: 10px;
   }
 }
