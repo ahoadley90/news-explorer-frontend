@@ -48,7 +48,7 @@
 
 @media screen and (max-width: 600px) {
   .saved-news {
-    padding: 16px 8px 24px;
+    padding: 16px 10px 24px;
   }
 
   .saved-news__container {
