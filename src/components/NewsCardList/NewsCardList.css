@@ -78,7 +78,7 @@
   }
 
   .news-card-list__container {
-    max-width: calc(100% - 80px); /* Ensures 40px margin on both sides */
+    max-width: calc(100% - 80px);
   }
 
   .news-card-list__cards {

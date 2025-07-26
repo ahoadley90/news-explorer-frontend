@@ -97,7 +97,8 @@
 .news-card__title {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 26px;
+  line-height: 22px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -176,7 +177,9 @@
 @media (max-width: 320px) {
   .news-card {
     height: 440px;
-    min-height: 420px;
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
   }
 
   .news-card__image {
@@ -185,6 +188,9 @@
 
   .news-card__content {
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
   .news-card__title {
