@@ -112,4 +112,9 @@
     line-height: 24px;
     margin-bottom: 122px;
   }
+  .search-results__title {
+    font-size: 30px;
+    line-height: 40px;
+    padding-left: 16px;
+  }
 }

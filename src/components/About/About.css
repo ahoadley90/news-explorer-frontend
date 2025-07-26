@@ -57,3 +57,10 @@
     text-align: left;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
