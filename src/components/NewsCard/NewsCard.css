@@ -1,7 +1,8 @@
 .news-card {
   width: 100%;
   max-width: 400px;
-  height: 576px;
+  height: auto;
+  min-height: 576px;
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;

@@ -178,6 +178,7 @@
     background: none;
     border: none;
     padding: 0;
+    display: block;
   }
 
   .header_saved-news .header__menu-button {
