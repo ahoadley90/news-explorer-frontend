@@ -1,7 +1,6 @@
 .main {
   min-height: 100vh;
   flex-grow: 1;
-  overflow-x: hidden;
 }
 
 .hero {
@@ -87,10 +86,6 @@
   .search-results__title {
     font-size: 30px;
     line-height: 40px;
-  }
-
-  .main {
-    overflow-x: hidden;
   }
 }
 
