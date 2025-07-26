@@ -66,8 +66,4 @@
   .saved-news__articles > *:first-child {
     margin-top: 24px;
   }
-
-  .news-card {
-    margin-bottom: 10px;
-  }
 }
