@@ -60,7 +60,8 @@
     grid-template-columns: 1fr;
     gap: 10px;
     margin-top: 24px;
-    padding: 0 16px;
+    padding: 0;
+    margin-left: 16px;
     width: calc(100% - 32px);
   }
 
