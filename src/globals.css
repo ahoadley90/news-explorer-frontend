@@ -9,7 +9,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   width: 100%;
   font-family: "Roboto", "Roboto Slab", sans-serif;
 }
@@ -40,5 +39,9 @@ img {
 @media (max-width: 320px) {
   body {
     font-size: 14px;
+  }
+
+  * {
+    outline: 1px solid red;
   }
 }

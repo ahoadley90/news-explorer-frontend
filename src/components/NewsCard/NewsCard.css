@@ -85,6 +85,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .news-card__date {
@@ -99,16 +100,15 @@
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 26px;
-  line-height: 22px;
+  line-height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
-  line-height: 30px;
   color: #1a1b22;
-  margin: 0 0 16px;
+  margin: 0 0 10px;
 }
 
 .news-card__description {
@@ -116,7 +116,7 @@
   font-size: 16px;
   line-height: 22px;
   color: #1a1b22;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -134,7 +134,7 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
-  margin: 16px;
+  margin: auto 0 0;
 }
 
 .news-card__keyword {
@@ -177,10 +177,8 @@
 }
 @media (max-width: 320px) {
   .news-card {
-    height: 440px;
+    height: auto;
     min-height: 440px;
-    display: flex;
-    flex-direction: column;
   }
 
   .news-card__image {
@@ -191,45 +189,22 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    height: 100%;
   }
 
   .news-card__title {
-    font-family: "Roboto Slab", serif;
-    font-weight: 400;
-    font-size: 22px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
-    -webkit-box-orient: vertical;
-    line-height: 30px;
-    color: #1a1b22;
-    margin: 0 0 16px;
+    margin-bottom: 10px;
   }
 
   .news-card__description {
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    color: #1a1b22;
-    margin: 0 0 16px;
-    flex-grow: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: 4;
     line-clamp: 4;
-    -webkit-box-orient: vertical;
-  }
-  .news-card__date {
-    font-size: 16px;
+    margin-bottom: 12px;
   }
 
   .news-card__source {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
+    margin: auto 0 0;
   }
 }
