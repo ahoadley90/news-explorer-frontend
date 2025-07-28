@@ -41,7 +41,23 @@ img {
     font-size: 14px;
   }
 
-  * {
+  .debug-layout {
     outline: 1px solid red;
+  }
+
+  .debug-layout * {
+    outline: 1px solid blue;
+  }
+
+  .debug-layout * * {
+    outline: 1px solid green;
+  }
+
+  .debug-layout * * * {
+    outline: 1px solid orange;
+  }
+
+  .debug-layout * * * * {
+    outline: 1px solid purple;
   }
 }
