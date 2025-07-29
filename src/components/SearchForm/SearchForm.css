@@ -10,7 +10,6 @@
   display: flex;
   height: 64px;
   border-radius: 100px;
-  overflow: hidden;
   background-color: #fff;
   width: 100%;
 }
@@ -46,7 +45,7 @@
   border-radius: 0 100px 100px 0;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .search-form__button:hover {
@@ -59,11 +58,15 @@
 
 @media screen and (max-width: 768px) {
   .search-form {
-    max-width: 452px;
+    max-width: 448px;
   }
 
-  .search-form__input-container,
+  .search-form__input-container {
+    height: 56px;
+  }
+
   .search-form__button {
+    min-width: 160px;
     height: 56px;
   }
 }
