@@ -1,7 +1,7 @@
 .news-card-list {
   width: 100%;
   background-color: #f5f6f7;
-  padding: 80px 0;
+  padding: 80px 16px;
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 767px) {
   .news-card-list {
-    padding: 40px 0;
+    padding: 40px 16px;
   }
 
   .news-card-list__title {
@@ -87,7 +87,6 @@
 @media (max-width: 1024px) {
   .news-card-list__cards {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 688px;
   }
 }
 
