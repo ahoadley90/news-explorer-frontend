@@ -95,19 +95,25 @@
 
 @media screen and (max-width: 320px) {
   .hero {
-    height: 480px;
+    height: 536px;
+    padding-top: 86px;
+    justify-content: flex-start;
+  }
+
+  .hero__content {
+    max-width: 288px;
   }
 
   .hero__title {
-    font-size: 30px;
+    font-size: 36px;
     line-height: 40px;
     margin-bottom: 16px;
   }
 
   .hero__description {
-    font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 48px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 122px;
   }
 }
 

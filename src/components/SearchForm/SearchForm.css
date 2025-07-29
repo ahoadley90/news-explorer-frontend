@@ -10,6 +10,7 @@
   display: flex;
   height: 64px;
   border-radius: 100px;
+  overflow: hidden;
   background-color: #fff;
 }
 
@@ -25,6 +26,7 @@
   line-height: 22px;
   color: #1a1b22;
   border: none;
+  outline: none;
 }
 
 .search-form__input::placeholder {
@@ -63,12 +65,16 @@
 }
 
 @media screen and (max-width: 767px) {
+  .search-form {
+    max-width: 452px;
+  }
+
   .search-form__input-container {
     height: 56px;
   }
 
   .search-form__button {
-    width: 100px;
+    width: 160px;
   }
 }
 
@@ -83,6 +89,7 @@
   .search-form__input-container {
     flex-direction: column;
     height: auto;
+    background-color: transparent;
   }
 
   .search-form__input {
@@ -111,6 +118,7 @@
   .search-form__input-container {
     flex-direction: column;
     height: auto;
+    background-color: transparent;
   }
 
   .search-form__input {
