@@ -9,6 +9,7 @@
   background-position: center;
   height: 576px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 16px;
@@ -77,15 +78,36 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
+  .hero {
+    height: 536px;
+  }
+
   .hero__title {
-    font-size: 30px;
+    font-size: 36px;
     line-height: 40px;
   }
 
-  .search-results__title {
+  .hero__description {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero {
+    height: 480px;
+  }
+
+  .hero__title {
     font-size: 30px;
     line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 48px;
   }
 }
 

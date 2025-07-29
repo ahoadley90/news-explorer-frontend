@@ -1,11 +1,7 @@
 .news-card {
   width: 100%;
-  max-width: 400px;
-  height: 576px;
-  min-height: 576px;
   background: #ffffff;
   border-radius: 16px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -82,18 +78,16 @@
 
 .news-card__content {
   padding: 20px 24px 24px;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex-grow: 1;
 }
 
 .news-card__date {
-  font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
-  margin: 0 0 12px;
+  margin-bottom: 12px;
 }
 
 .news-card__title {
@@ -101,22 +95,21 @@
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
+  color: #1a1b22;
+  margin-bottom: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
-  color: #1a1b22;
-  margin: 0 0 10px;
 }
 
 .news-card__description {
-  font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 22px;
   color: #1a1b22;
-  margin: 0 0 12px;
+  margin-bottom: 18px;
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -127,28 +120,11 @@
 }
 
 .news-card__source {
-  font-family: "Roboto Slab", serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
   color: #b6bcbf;
-  margin-top: auto;
-}
-
-.news-card__keyword {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #000000;
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 768px) {
@@ -187,24 +163,15 @@
 
   .news-card__content {
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
   }
 
   .news-card__title {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    font-size: 22px;
+    line-height: 26px;
     margin-bottom: 10px;
   }
 
   .news-card__description {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
     margin-bottom: 12px;
-  }
-
-  .news-card__source {
-    margin-top: auto;
   }
 }
