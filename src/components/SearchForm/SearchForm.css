@@ -17,7 +17,7 @@
 
 .search-form__input {
   flex-grow: 1;
-  background: transparent;
+  background: #fff;
   box-sizing: border-box;
   border-radius: 100px;
   padding: 0 24px;
@@ -78,7 +78,7 @@
   .search-form__input-container {
     flex-direction: column;
     height: auto;
-    background-color: transparent;
+    background-color: white;
   }
 
   .search-form__input {
