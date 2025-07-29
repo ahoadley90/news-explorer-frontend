@@ -221,46 +221,44 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <div className="app-container">
-          <Header {...headerProps} />
-          <Routes>
-            <Route path="/" element={<Main {...mainProps} />} />
-            {authState.isLoggedIn && (
-              <Route
-                path="/saved-news"
-                element={<SavedNews {...savedNewsProps} />}
-              />
-            )}
-          </Routes>
-          <Footer />
-        </div>
-        <SignInModal
-          isOpen={modals.isSignInModalOpen}
-          onClose={() => toggleModal("isSignInModalOpen", false)}
-          onSignIn={handleSignIn}
-          openSignUp={() => {
-            toggleModal("isSignInModalOpen", false);
-            toggleModal("isSignUpModalOpen", true);
-          }}
-        />
-        <SignUpModal
-          isOpen={modals.isSignUpModalOpen}
-          onClose={() => toggleModal("isSignUpModalOpen", false)}
-          onSignUp={handleSignUp}
-          openSignIn={() => {
-            toggleModal("isSignUpModalOpen", false);
-            toggleModal("isSignInModalOpen", true);
-          }}
-        />
-        <RegistrationSuccessModal
-          isOpen={modals.isRegistrationSuccessModalOpen}
-          onClose={() => toggleModal("isRegistrationSuccessModalOpen", false)}
-          openSignIn={() => {
-            toggleModal("isRegistrationSuccessModalOpen", false);
-            toggleModal("isSignInModalOpen", true);
-          }}
-        />
+        <Header {...headerProps} />
+        <Routes>
+          <Route path="/" element={<Main {...mainProps} />} />
+          {authState.isLoggedIn && (
+            <Route
+              path="/saved-news"
+              element={<SavedNews {...savedNewsProps} />}
+            />
+          )}
+        </Routes>
+        <Footer />
       </div>
+      <SignInModal
+        isOpen={modals.isSignInModalOpen}
+        onClose={() => toggleModal("isSignInModalOpen", false)}
+        onSignIn={handleSignIn}
+        openSignUp={() => {
+          toggleModal("isSignInModalOpen", false);
+          toggleModal("isSignUpModalOpen", true);
+        }}
+      />
+      <SignUpModal
+        isOpen={modals.isSignUpModalOpen}
+        onClose={() => toggleModal("isSignUpModalOpen", false)}
+        onSignUp={handleSignUp}
+        openSignIn={() => {
+          toggleModal("isSignUpModalOpen", false);
+          toggleModal("isSignInModalOpen", true);
+        }}
+      />
+      <RegistrationSuccessModal
+        isOpen={modals.isRegistrationSuccessModalOpen}
+        onClose={() => toggleModal("isRegistrationSuccessModalOpen", false)}
+        openSignIn={() => {
+          toggleModal("isRegistrationSuccessModalOpen", false);
+          toggleModal("isSignInModalOpen", true);
+        }}
+      />
     </Router>
   );
 }
