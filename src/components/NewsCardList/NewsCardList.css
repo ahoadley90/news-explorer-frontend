@@ -71,7 +71,7 @@
 
   .news-card-list__cards {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .news-card-list__button {
