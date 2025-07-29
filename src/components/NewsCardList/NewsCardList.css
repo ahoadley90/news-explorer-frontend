@@ -1,20 +1,14 @@
 .news-card-list {
   width: 100%;
   background-color: #f5f6f7;
-  padding: 80px 16px;
-  max-width: 1440px;
-  margin: 0 auto;
+  padding: 80px 0;
   box-sizing: border-box;
 }
 
 .news-card-list__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 0;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .news-card-list__title {
@@ -27,24 +21,6 @@
   text-align: left;
 }
 
-@media screen and (max-width: 767px) {
-  .news-card-list {
-    padding: 40px 16px;
-  }
-
-  .news-card-list__title {
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .news-card-list__cards {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    max-width: 288px;
-    margin: 0 auto;
-  }
-}
-
 .news-card-list__cards {
   list-style-type: none;
   padding: 0;
@@ -53,8 +29,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 64px;
-  max-width: 1232px;
-  justify-content: center;
 }
 
 .news-card-list__button {
@@ -78,29 +52,29 @@
   opacity: 0.8;
 }
 
-@media (max-width: 1280px) {
-  .news-card-list__cards {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1000px;
+@media (max-width: 767px) {
+  .news-card-list {
+    padding: 40px 0;
   }
-}
-@media (max-width: 1024px) {
-  .news-card-list__cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .news-card-list__cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .news-card-list__container {
-    max-width: calc(100% - 80px);
-    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .news-card-list__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 32px;
+  }
+
+  .news-card-list__cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .news-card-list__button {
+    width: calc(100% - 32px);
+    margin: 32px auto 0;
   }
 }
 
@@ -108,15 +82,12 @@
   .news-card-list {
     padding: 40px 0;
   }
+
   .news-card-list__container {
-    max-width: calc(100% - 32px);
+    padding: 0;
   }
 
   .news-card-list__cards {
     gap: 10px;
-  }
-
-  .news-card-list__button {
-    width: calc(100% - 32px);
   }
 }
