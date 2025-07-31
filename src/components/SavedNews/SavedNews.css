@@ -102,6 +102,8 @@
   }
 
   .saved-news__articles {
+    flex-direction: column;
+    display: flex;
     grid-template-columns: 2fr 225px;
     gap: 10px;
     margin-top: 24px;
@@ -116,6 +118,6 @@
 
   .news-card {
     width: 100%;
-    max-width: none;
+    max-width: 225px;
   }
 }
