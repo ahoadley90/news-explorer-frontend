@@ -70,6 +70,16 @@
   box-shadow: inset 0 -3px 0 #1a1b22;
 }
 
+.header__nav-link_active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+}
+
 .header_saved-news .header__nav-link_active::after {
   background-color: #1a1b22;
 }

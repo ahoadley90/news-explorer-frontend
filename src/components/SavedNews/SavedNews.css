@@ -87,7 +87,7 @@
   }
 
   .saved-news__articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 }
 
@@ -102,7 +102,7 @@
   }
 
   .saved-news__articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     gap: 10px;
     margin-top: 24px;
     padding: 0;
