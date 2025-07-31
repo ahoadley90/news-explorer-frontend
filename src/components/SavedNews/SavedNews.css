@@ -102,7 +102,7 @@
   }
 
   .saved-news__articles {
-    grid-template-columns: 2fr;
+    grid-template-columns: 2fr 225px;
     gap: 10px;
     margin-top: 24px;
     padding: 0;

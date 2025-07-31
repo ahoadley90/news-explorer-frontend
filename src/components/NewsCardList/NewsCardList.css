@@ -71,7 +71,7 @@
   }
 
   .news-card-list__cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr 280px;
     gap: 8px;
   }
 
