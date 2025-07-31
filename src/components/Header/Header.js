@@ -16,7 +16,7 @@ function Header({
 }) {
   const [activeModal, setActiveModal] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const openModal = (modalName) => {
     setActiveModal(modalName);
@@ -56,7 +56,7 @@ function Header({
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 480);
+      setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 480) {
         setIsMenuOpen(false);
       }

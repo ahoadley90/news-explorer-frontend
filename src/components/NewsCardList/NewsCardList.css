@@ -1,6 +1,6 @@
 .news-card-list {
   width: 100%;
-  max-width: calc(100% - 208px);
+  max-width: 1232px;
   background-color: #f5f6f7;
   padding: 80px 0;
   margin: 0 auto;
@@ -31,6 +31,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 64px;
+  justify-content: center;
 }
 
 .news-card-list__button {
@@ -56,7 +57,7 @@
 
 @media (max-width: 767px) {
   .news-card-list {
-    max-width: calc(100% - 40px);
+    padding: 40px 0;
   }
 
   .news-card-list__container {
@@ -82,8 +83,7 @@
 
 @media (max-width: 320px) {
   .news-card-list {
-    max-width: 100%;
-    padding: 40px 16px;
+    padding: 0;
   }
 
   .news-card-list__container {
