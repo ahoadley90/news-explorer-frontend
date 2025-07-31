@@ -156,5 +156,6 @@
   }
   .saved-news__articles .news-card {
     width: 288px;
+    margin: 0;
   }
 }
