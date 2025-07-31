@@ -83,7 +83,7 @@
 
 @media (max-width: 320px) {
   .news-card-list {
-    padding: 0 16px;
+    padding: 0;
   }
 
   .news-card-list__title {
@@ -97,6 +97,7 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 0 16px;
   }
 
   .news-card {
@@ -105,7 +106,7 @@
   }
 
   .news-card-list__button {
-    width: 100%;
+    width: 288px;
     margin-top: 16px;
   }
 }

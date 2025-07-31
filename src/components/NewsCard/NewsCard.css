@@ -127,6 +127,7 @@
   letter-spacing: 0.4px;
   color: #b6bcbf;
   text-transform: uppercase;
+  margin-top: auto;
 }
 
 .news-card__text {
@@ -203,6 +204,9 @@
 
   .news-card__content {
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 196px);
   }
 
   .news-card__title {
@@ -220,5 +224,6 @@
   .news-card__source {
     font-size: 16px;
     line-height: 20px;
+    margin-top: auto;
   }
 }
