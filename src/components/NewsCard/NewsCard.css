@@ -192,8 +192,9 @@
 }
 @media (max-width: 320px) {
   .news-card {
-    width: 100%;
-    margin: 0;
+    width: 288px;
+    height: 440px;
+    margin: 0 auto;
   }
 
   .news-card__image {
