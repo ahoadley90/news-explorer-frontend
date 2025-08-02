@@ -83,7 +83,7 @@
 
 @media (max-width: 320px) {
   .news-card-list {
-    padding: 16px;
+    padding: 0px;
   }
 
   .news-card-list__title {

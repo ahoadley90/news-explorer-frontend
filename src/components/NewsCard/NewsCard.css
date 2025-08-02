@@ -189,6 +189,7 @@
   .news-card {
     width: 288px;
     height: 440px;
+    max-height: none;
     margin: 0 auto;
   }
 
@@ -210,13 +211,13 @@
   .news-card__title {
     font-size: 22px;
     line-height: 26px;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
   }
 
   .news-card__text {
     font-size: 16px;
     line-height: 22px;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
   }
 
   .news-card__source {
