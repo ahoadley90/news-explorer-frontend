@@ -119,13 +119,8 @@
     max-width: 288px;
     flex-direction: column;
     height: auto;
-    margin: 0 auto;
+    gap: 16px;
     background: transparent;
-  }
-
-  .search-form__input-container {
-    width: 100%;
-    margin-bottom: 16px;
   }
 
   .search-form__input {
@@ -133,9 +128,8 @@
     height: 56px;
     font-size: 16px;
     padding: 0 16px;
-    margin-bottom: 16px;
     border-radius: 100px;
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   .search-form__button {
