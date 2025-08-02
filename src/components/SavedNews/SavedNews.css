@@ -146,7 +146,7 @@
   }
 
   .saved-news__articles {
-    display: flex;
+     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
