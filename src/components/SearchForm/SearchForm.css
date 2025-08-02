@@ -120,6 +120,12 @@
     flex-direction: column;
     height: auto;
     margin: 0 auto;
+    background: transparent;
+  }
+
+  .search-form__input-container {
+    width: 100%;
+    margin-bottom: 16px;
   }
 
   .search-form__input {
@@ -129,6 +135,7 @@
     padding: 0 16px;
     margin-bottom: 16px;
     border-radius: 100px;
+    background: #FFFFFF;
   }
 
   .search-form__button {
