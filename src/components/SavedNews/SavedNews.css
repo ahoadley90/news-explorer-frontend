@@ -129,7 +129,7 @@
 
 @media (max-width: 400px) {
   .saved-news__articles {
-    grid-template-columns: 1fr 288px;
+    grid-template-columns: 288px;
   }
 }
 
