@@ -10,6 +10,7 @@
   background: #ffffff;
   border-radius: 0px;
   overflow: hidden;
+  border-radius: 100px;
 }
 
 .search-form__input-container {
@@ -121,6 +122,7 @@
     height: auto;
     background: transparent;
     box-sizing: border-box;
+    border-radius: 0px;
   }
 
   .search-form__input {
