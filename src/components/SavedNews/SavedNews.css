@@ -129,7 +129,7 @@
 
 @media (max-width: 400px) {
   .saved-news__articles {
-    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    grid-template-columns: 1fr 288px;
   }
 }
 
