@@ -2,6 +2,10 @@
   min-height: 100vh;
   flex-grow: 1;
 }
+.main-content {
+  padding: 0 16px;
+  box-sizing: border-box;
+}
 
 .hero {
   background-image: url("../../images/hero-background.jpg");
