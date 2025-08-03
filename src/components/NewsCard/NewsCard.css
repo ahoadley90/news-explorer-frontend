@@ -187,7 +187,71 @@
 
 @media screen and (max-width: 440px) {
   .news-card {
+    max-width: 288px;
     height: 440px;
+    max-height: none;
+    margin: 0 auto;
+  }
+
+  .news-card__image {
+    height: 196px;
+  }
+
+  .news-card__content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 196px);
+  }
+
+  .news-card__description {
+    font-size: 16px;
+    line-height: 22px;
+    color: #1a1b22;
+    margin-bottom: 18px;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .news-card__title {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0 0 10px;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-height: 52px;
+  }
+
+  .news-card__date {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 10px;
+    letter-spacing: 0;
+  }
+
+  .news-card__text {
+    font-size: 16px;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .news-card__source {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: auto;
+    margin-bottom: 0;
   }
 }
 
