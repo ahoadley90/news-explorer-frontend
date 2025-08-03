@@ -87,6 +87,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    padding: 0;
   }
 
   .news-card-list__title {
@@ -104,7 +105,6 @@
   }
 
   .news-card {
-    width: 288px;
     margin: 0;
   }
 
