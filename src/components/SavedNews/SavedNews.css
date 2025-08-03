@@ -14,7 +14,7 @@
 
 .saved-news__articles {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
   gap: 16px;
   justify-content: center;
   background-color: #f5f6f7;
@@ -128,7 +128,7 @@
 
 @media (max-width: 400px) {
   .saved-news__articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
   }
 }
 
