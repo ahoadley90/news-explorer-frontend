@@ -159,7 +159,7 @@
     align-items: center;
     gap: 10px;
     padding: 0;
-    grid-template-columns: 2fr 280px;
+    grid-template-columns: 2fr 288px;
   }
 
   .news-card {

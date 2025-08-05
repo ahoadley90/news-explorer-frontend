@@ -78,10 +78,21 @@
   width: 100%;
   height: 3px;
   background-color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.header__nav-link:hover::after,
+.header__nav-link_active::after {
+  opacity: 1;
 }
 
 .header_saved-news .header__nav-link_active::after {
   background-color: #1a1b22;
+}
+
+.header_saved-news .header__nav-link {
+  color: #1a1b22;
 }
 
 .header__button {
