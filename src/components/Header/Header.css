@@ -83,10 +83,12 @@
 .header__nav-link:hover::after,
 .header__nav-link_active::after {
   opacity: 1;
+  margin-bottom: -30px;
 }
 
 .header_saved-news .header__nav-link_active::after {
   background-color: #1a1b22;
+  margin-bottom: -30px;
 }
 .header__button {
   font-family: "Roboto", sans-serif;
@@ -183,6 +185,15 @@
     position: absolute;
     top: 66px;
     right: 24px;
+  }
+
+  .header_saved-news .header__nav-link_active::after {
+    margin-bottom: -20px;
+  }
+
+  .header__nav-link:hover::after,
+  .header__nav-link_active::after {
+    margin-bottom: -20px;
   }
 }
 
