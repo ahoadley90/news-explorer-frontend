@@ -9,7 +9,7 @@
 
 .news-card-list__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  grid-template-columns: 3fr;
   gap: 16px;
   padding: 0 16px;
 }
