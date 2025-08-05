@@ -75,7 +75,7 @@
   }
 
   .saved-news__articles {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     background-color: #f5f6f7;
     padding: 24px 0;
