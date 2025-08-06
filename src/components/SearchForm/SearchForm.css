@@ -120,6 +120,7 @@
     max-width: 288px;
     flex-direction: column;
     height: auto;
+    align-items: center;
     background: transparent;
     box-sizing: border-box;
     border-radius: 0px;
