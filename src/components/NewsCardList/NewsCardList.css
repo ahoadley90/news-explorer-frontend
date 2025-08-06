@@ -99,6 +99,12 @@
   }
 }
 
+@media screen and (max-width: 583px) {
+  .news-card-list__container {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 440px) {
   .news-card-list__container {
     grid-template-columns: 1fr;
