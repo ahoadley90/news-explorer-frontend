@@ -221,20 +221,19 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <div className="app-container">
-          <Header {...headerProps} />
-          <Routes>
-            <Route path="/" element={<Main {...mainProps} />} />
-            {authState.isLoggedIn && (
-              <Route
-                path="/saved-news"
-                element={<SavedNews {...savedNewsProps} />}
-              />
-            )}
-          </Routes>
-          <Footer />
-        </div>
+        <Header {...headerProps} />
+        <Routes>
+          <Route path="/" element={<Main {...mainProps} />} />
+          {authState.isLoggedIn && (
+            <Route
+              path="/saved-news"
+              element={<SavedNews {...savedNewsProps} />}
+            />
+          )}
+        </Routes>
+        <Footer />
       </div>
+
       <SignInModal
         isOpen={modals.isSignInModalOpen}
         onClose={() => toggleModal("isSignInModalOpen", false)}
