@@ -35,6 +35,6 @@ html {
 
 @media screen and (max-width: 320px) {
   .app {
-    padding: 0 8px;
+    padding: 0;
   }
 }
