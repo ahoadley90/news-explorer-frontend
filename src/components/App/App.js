@@ -221,17 +221,19 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Header {...headerProps} />
-        <Routes>
-          <Route path="/" element={<Main {...mainProps} />} />
-          {authState.isLoggedIn && (
-            <Route
-              path="/saved-news"
-              element={<SavedNews {...savedNewsProps} />}
-            />
-          )}
-        </Routes>
-        <Footer />
+        <div className="app-container">
+          <Header {...headerProps} />
+          <Routes>
+            <Route path="/" element={<Main {...mainProps} />} />
+            {authState.isLoggedIn && (
+              <Route
+                path="/saved-news"
+                element={<SavedNews {...savedNewsProps} />}
+              />
+            )}
+          </Routes>
+          <Footer />
+        </div>
       </div>
       <SignInModal
         isOpen={modals.isSignInModalOpen}

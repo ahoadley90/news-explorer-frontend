@@ -9,9 +9,11 @@
 
 .news-card-list__container {
   display: grid;
-  grid-template-columns: 3fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 0 16px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .news-card-list__title {
