@@ -131,6 +131,23 @@
   }
 }
 
+@media (max-width: 500px) {
+  .saved-news__articles {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 16px 0;
+  }
+
+  .news-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .saved-news__articles .news-card {
+    width: 288px;
+    margin: 0;
+  }
+}
+
 @media (max-width: 400px) {
   .saved-news__articles {
     grid-template-columns: repeat(1, 1fr);
