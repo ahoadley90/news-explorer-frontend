@@ -1,0 +1,155 @@
+.main {
+  min-height: 100vh;
+  flex-grow: 1;
+}
+.main-content {
+  padding: 0 16px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.hero {
+  background-image: url("../../images/hero-background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 576px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.hero__content {
+  max-width: 608px;
+  width: 100%;
+  text-align: left;
+}
+
+.hero__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  color: #ffffff;
+  margin: 0 0 32px;
+}
+
+.hero__description {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0 0 88px;
+}
+
+.hero .search-form {
+  margin: 0;
+  width: 100%;
+}
+
+.search-results {
+  background-color: #f5f6f7;
+  padding: 80px 0;
+}
+
+.search-results__error {
+  text-align: center;
+  color: #ff0000;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 48px;
+  }
+
+  .search-results {
+    padding: 40px 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    height: 536px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero__description {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero {
+    height: 536px;
+    padding-top: 86px;
+    justify-content: flex-start;
+  }
+
+  .hero__content {
+    max-width: 288px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 122px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero {
+    height: 536px;
+    padding: 86px 16px 32px;
+    box-sizing: border-box;
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    max-width: 288px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 122px;
+  }
+  .search-results__title {
+    font-size: 30px;
+    line-height: 40px;
+    padding-left: 16px;
+  }
+}

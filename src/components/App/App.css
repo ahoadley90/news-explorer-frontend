@@ -1,0 +1,40 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-container {
+  padding: 0 16px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .app-container {
+    padding: 0 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .app-container {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .app {
+    padding: 0;
+  }
+}

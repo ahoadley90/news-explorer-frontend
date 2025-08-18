@@ -1,0 +1,63 @@
+:root {
+  --black: #1a1b22;
+  --white: #ffffff;
+  --gray: #b6bcbf;
+  --blue: #2f71e5;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Roboto", "Roboto Slab", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+
+  .debug-layout {
+    outline: 1px solid red;
+  }
+
+  .debug-layout * {
+    outline: 1px solid blue;
+  }
+
+  .debug-layout * * {
+    outline: 1px solid green;
+  }
+
+  .debug-layout * * * {
+    outline: 1px solid orange;
+  }
+
+  .debug-layout * * * * {
+    outline: 1px solid purple;
+  }
+}

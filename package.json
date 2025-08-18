@@ -1,0 +1,49 @@
+{
+  "homepage": "https://ahoadley90.github.io/news-explorer-frontend",
+  "name": "news-explorer-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@remix-run/router": "^1.0.0",
+    "firebase": "^11.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.0.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/eslint-parser": "^7.22.5",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "eslint": "^8.42.0",
+    "eslint-config-react-app": "^7.0.1",
+    "gh-pages": "^6.3.0",
+    "react-scripts": "5.0.1"
+  }
+}

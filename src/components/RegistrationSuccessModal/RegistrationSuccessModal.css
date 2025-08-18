@@ -1,0 +1,33 @@
+.modal-overlay {
+  /* ... existing styles ... */
+}
+
+.modal {
+  /* ... existing styles ... */
+}
+
+.modal__content {
+  /* ... existing styles ... */
+}
+
+.modal__title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.modal__link {
+  color: #2f71e5;
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.modal__link:hover {
+  opacity: 0.8;
+}
